@@ -46,6 +46,9 @@
   .flag.warn{background:var(--warnbg);border-color:var(--warn);color:#7a5408}
   .flag.info{background:var(--accentbg);border-color:var(--accent);color:#1a2f8a}
   .flag b{display:block;margin-bottom:2px}
+  .demobanner{background:#fbebeb;border:1px solid #e3b3b3;color:#7a1e1e;font-weight:600;font-size:13px;padding:11px 14px;border-radius:5px;margin:14px 0}
+  .draftmark{background:#fff7e6;border:1px dashed #d9a300;color:#7a5408;font-size:12.5px;padding:9px 12px;border-radius:4px;margin:8px 0;font-weight:600}
+  .datanote{font-size:12px;color:var(--muted);margin-top:12px;line-height:1.6}
   .keyrow{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:10px;font-size:13px;color:var(--muted)}
   .keyrow input{flex:1;min-width:200px}
   footer{color:var(--muted);font-size:12px;padding:24px 0;line-height:1.7}
@@ -60,6 +63,7 @@
 </div></header>
 
 <div class="wrap">
+  <div id="demobanner"></div>
   <div class="note"><b>Advisory only.</b> This tool drafts evidence and gaps; a Qualified Person / QA must review and sign. It does not validate anything by itself, makes no release decision, and uses synthetic/educational logic. Not regulatory advice. Risk tiers are computed deterministically; an AI model only drafts the written summary.</div>
 
   <!-- STEP 1 INTAKE -->
@@ -90,6 +94,7 @@
   <footer>
     <b>How testing works.</b> This demo runs on the author's API key (rate-limited &amp; budget-capped) so you can try it with zero setup. To run it inside your own environment, self-host and set your own <code>ANTHROPIC_API_KEY</code> (see README) — your data and key never leave your system. Power users can paste their own key below to bypass the demo limit.
     <div class="keyrow"><span>Use my own key (optional):</span><input type="text" id="byo" placeholder="sk-ant-... (optional; used for this session only, never stored)"></div>
+    <p class="datanote"><b>Data handling.</b> Your interview answers are processed in memory to generate this dossier and are <b>not stored</b> by this app. When an AI summary is generated, the prompt is sent to Anthropic's API, which per Anthropic policy is <b>not used to train models</b>. The hosted demo is for <b>synthetic data only</b> — for real systems, self-host so nothing leaves your environment.</p>
     <div style="margin-top:14px">© 2026 Gourav Pandey · independent &amp; self-built · synthetic/educational · not sponsored or endorsed by any employer · <span id="spend"></span></div>
   </footer>
 </div>
@@ -117,7 +122,10 @@ function renderQs(){
  }).join("");
 }
 function tog(k,v,el){A[k]=A[k]||[];if(el.checked)A[k].push(v);else A[k]=A[k].filter(x=>x!==v);}
-function api(path,b){return fetch(path,{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(b)}).then(r=>r.json());}
+function api(path,b){const send=Object.assign({},b,{passcode:sessionStorage.getItem('pc')||''});
+ return fetch(path,{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(send)}).then(r=>{
+  if(r.status===401){sessionStorage.removeItem('pc');const c=prompt('Access code (from the presenter):');if(c){sessionStorage.setItem('pc',c);return api(path,b);}}
+  return r.json();});}
 function renderFlags(fl){if(!fl||!fl.length)return"";return `<div class="flags">`+fl.map(f=>`<div class="flag ${f.level}"><b>${f.level==='stop'?'■ STOP — ':f.level==='warn'?'▲ ':'• '}${f.title}</b>${f.text}</div>`).join("")+`</div>`;}
 
 async function doScope(){
@@ -153,7 +161,8 @@ function renderDossier(r){
  const reg=r.register;const bom=r.aibom;
  const bomShown=["models","providers","mcp_servers","data_stores","frameworks","apis"].filter(k=>bom[k]&&bom[k].length);
  document.getElementById('dossier').innerHTML=
-  `<h2>Validation-readiness dossier</h2><p class="sub">Generated ${r.generated_at} · advisory · synthetic logic</p>
+  `<h2>Validation-readiness dossier</h2><p class="sub">Generated ${r.generated_at} · control set ${r.control_version||""} · advisory</p>
+   <div class="draftmark">DRAFT — advisory only. This is NOT a validation record or a release decision. A Qualified Person / QA must independently review and sign.</div>
    <div class="kv">
      <div class="b"><div class="l">Overall risk</div><div class="v"><span class="pill ${r.risk.overall}">${r.risk.overall}</span></div></div>
      <div class="b"><div class="l">Readiness</div><div class="v">${reg.readiness_pct}%</div></div>
@@ -179,6 +188,13 @@ function renderDossier(r){
 function dl(){const b=new Blob([JSON.stringify(window._dossier,null,2)],{type:"application/json"});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download="gxp_ai_validation_dossier.json";a.click();}
 function show(id){document.getElementById(id).classList.remove('hide');}
 renderQs();
+fetch('/api/config').then(r=>r.json()).then(cfg=>{
+  if(cfg.demo_mode){
+    document.getElementById('demobanner').innerHTML='<div class="demobanner">DEMO — synthetic data only. Do NOT enter real system details, real data, or real API keys. For real systems, self-host (see README).</div>';
+    var kr=document.querySelector('.keyrow'); if(kr) kr.style.display='none';
+  }
+  if(cfg.passcode_required && !sessionStorage.getItem('pc')){var c=prompt('Access code (from the presenter):'); if(c) sessionStorage.setItem('pc',c);}
+}).catch(()=>{});
 fetch('/api/status').then(r=>r.json()).then(s=>document.getElementById('spend').textContent=`demo budget used: $${s.spent_usd} / $${s.cap_usd}`).catch(()=>{});
 </script>
 </body>

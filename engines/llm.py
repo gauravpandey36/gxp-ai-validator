@@ -6,8 +6,8 @@ Key values are never logged or returned."""
 import json, os, urllib.request
 from pathlib import Path
 
-DATA = Path(__file__).resolve().parent.parent / "data"
-DATA.mkdir(exist_ok=True)
+DATA = Path(os.environ.get("LEDGER_DIR") or (Path(__file__).resolve().parent.parent / "data"))
+DATA.mkdir(parents=True, exist_ok=True)
 LEDGER = DATA / "ledger.json"
 
 DEMO_CAP_USD = float(os.environ.get("DEMO_CAP_USD", "45"))

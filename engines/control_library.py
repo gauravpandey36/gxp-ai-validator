@@ -4,6 +4,8 @@ Each control: framework -> clause -> control -> question -> evidence type, plus 
 All synthetic/educational. Not regulatory advice.
 """
 
+VERSION = "v0.2 · 2026-06-21"
+
 # Intake answer schema (keys produced by the UI):
 #  functions:[str]  impact:bool  enters_records:bool  autonomy:'decision_support'|'advisory'|'automated'
 #  model_type:'llm'|'ml'|'predictive'|'other'  build:'cots'|'configured'|'finetuned'|'custom'

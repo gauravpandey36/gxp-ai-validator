@@ -20,8 +20,15 @@ qualification · security/access · data privacy · model/data/system cards · g
 LLM hallucination/grounding controls.
 
 ## Try the hosted demo (zero setup)
-The hosted demo runs on the author's API key, **rate-limited and budget-capped**, so you can test it
-without any key. (Link shared at the ISPE 2026 summit / on request.)
+The hosted demo runs on the author's API key, **rate-limited, budget-capped, and behind an access code**,
+so you can try it without any key. (Link + code shared at the ISPE 2026 summit / on request.)
+
+> **Demo = synthetic data only.** Do **not** enter real system details, real data, or a real API key into
+> the hosted demo. Interview answers are processed in memory and **not stored**; AI summaries call the
+> Anthropic API (per Anthropic policy, API data is **not** used to train models). For real systems,
+> **self-host** (below) so nothing leaves your environment. The hosted demo runs with `DEMO_MODE=1`
+> (bring-your-own-key disabled) and an access code; the budget ledger is on a persistent volume with a
+> hard `DEMO_CAP_USD` cap, backstopped by an account-level spend limit.
 
 ## Run it in your own environment (recommended for real data)
 Your data and key never leave your machine.

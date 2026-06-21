@@ -7,9 +7,15 @@ from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 
 from engines import risk_engine, aibom, llm
-from engines.control_library import applicable
+from engines.control_library import applicable, VERSION as CTRL_VERSION
 
 app = FastAPI(title="GxP AI Validation Companion")
+DEMO_MODE = os.environ.get("DEMO_MODE", "").lower() in ("1", "true", "yes")
+DEMO_PASSCODE = os.environ.get("DEMO_PASSCODE", "")
+
+
+def _bad_pass(body):
+    return bool(DEMO_PASSCODE) and (body.get("passcode", "") != DEMO_PASSCODE)
 
 _RATE = defaultdict(deque)
 _LIMIT, _WINDOW = 40, 3600  # 40 assessments / hour / IP on the demo key
@@ -36,9 +42,18 @@ def status():
     return llm.spend_status()
 
 
+@app.get("/api/config")
+def config():
+    return {"demo_mode": DEMO_MODE, "passcode_required": bool(DEMO_PASSCODE),
+            "control_version": CTRL_VERSION}
+
+
 @app.post("/api/scope")
 async def scope(req: Request):
-    a = (await req.json()).get("answers", {})
+    body = await req.json()
+    if _bad_pass(body):
+        return JSONResponse({"error": "Invalid or missing access code."}, status_code=401)
+    a = body.get("answers", {})
     risk = risk_engine.classify(a)
     controls = [{"id": c["id"], "element": c["element"], "framework": c["framework"],
                  "question": c["question"], "evidence": c["evidence"], "severity": c["severity"]}
@@ -49,11 +64,13 @@ async def scope(req: Request):
 @app.post("/api/assess")
 async def assess(req: Request):
     body = await req.json()
+    if _bad_pass(body):
+        return JSONResponse({"error": "Invalid or missing access code."}, status_code=401)
     a = body.get("answers", {})
     evidence = body.get("evidence", {})
     manifest = body.get("manifest", "")
     attestation = body.get("attestation", {})
-    byo_key = (body.get("byo_key") or "").strip() or None
+    byo_key = None if DEMO_MODE else ((body.get("byo_key") or "").strip() or None)
 
     ip = req.client.host if req.client else "?"
     if byo_key is None and not _ok_rate(ip):
@@ -70,7 +87,7 @@ async def assess(req: Request):
         "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
         "risk": risk, "aibom": bom, "register": reg, "verdict": verdict,
         "narrative": narrative, "llm": meta, "spend": llm.spend_status(),
-        "attestation": attestation,
+        "attestation": attestation, "control_version": CTRL_VERSION, "advisory": True,
     }
 
 
