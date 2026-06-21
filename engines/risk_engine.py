@@ -36,10 +36,11 @@ def classify(a):
     else:
         autonomy = "Lower — decision support, human approves each output"
 
-    # overall
-    if annex22 == "Critical" or impact and auto:
+    # overall — calibrated in L7 validation: no GxP exposure -> LOW even for LLM/adaptive
+    # (independent cross-family assessors flagged the prior rule over-floored no-impact systems)
+    if annex22 == "Critical" or (impact and auto):
         overall = "HIGH"
-    elif impact or "Category 5" in gamp or adaptive or llm:
+    elif impact or records:
         overall = "MEDIUM"
     else:
         overall = "LOW"

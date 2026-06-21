@@ -1,0 +1,13 @@
+scenario_id,golden_overall,golden_annex22,llm_stop,dynamic_stop
+S01,HIGH,Critical,True,True
+S02,HIGH,Critical,False,False
+S03,LOW,Non-critical,False,False
+S04,HIGH,Critical,True,False
+S05,MEDIUM,Significant,True,False
+S06,LOW,Non-critical,False,False
+S07,LOW,Non-critical,False,False
+S08,HIGH,Critical,False,False
+S09,MEDIUM,Significant,False,True
+S10,HIGH,Critical,True,False
+S11,HIGH,Critical,False,False
+S12,LOW,Non-critical,False,False

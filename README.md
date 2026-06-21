@@ -58,6 +58,15 @@ written executive summary is replaced by a deterministic fallback.
 - Auto-discovery from a pasted manifest is **best-effort** and can miss shadow connections — verify manually.
 - It surfaces **gaps first**, never a green "compliant" stamp it owns.
 
+## Validation ("validate the validator")
+See `l7/VALIDATION_PACK.md`. On a 12-scenario golden set, the **deterministic engine matches expert
+ground truth 1.00** (including **100% recall on the safety-critical STOP flags**); two **independent
+cross-family assessors** (Claude, Llama-3.3-70B) agree with the corrected engine at **κ 0.86 / 0.65** —
+*after* a calibration fix the validation itself surfaced (the engine had over-floored no-GxP-impact
+systems to MEDIUM). On the LLM-in-critical STOP rule the deterministic engine outperformed both LLM
+assessors on recall — the empirical case for gating on rules, not the model. **Human-panel κ is pending**
+(blinded rater sheet + key in `l7/`).
+
 ## License
 MIT. © 2026 Gourav Pandey. Independent & self-built; synthetic/educational; not sponsored or endorsed
 by any employer; no proprietary or client data used.

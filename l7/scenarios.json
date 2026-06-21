@@ -1,0 +1,314 @@
+[
+ {
+  "id": "S01",
+  "desc": "A fine-tuned LLM drafts Module 3 regulatory submission sections; outputs flow into the submission dossier (a GxP record). A human reviews but does not check every citation. The model is periodically retrained on new submissions. Data: GxP records.",
+  "answers": {
+   "functions": [
+    "Regulatory authoring"
+   ],
+   "impact": true,
+   "enters_records": true,
+   "autonomy": "advisory",
+   "model_type": "llm",
+   "build": "finetuned",
+   "adaptive": "learning",
+   "data_sensitivity": "gxp_records",
+   "connections": [
+    "Vector database"
+   ],
+   "governance": "initial"
+  },
+  "golden": {
+   "overall": "HIGH",
+   "annex22": "Critical",
+   "stop_llm": true,
+   "stop_dynamic": true
+  }
+ },
+ {
+  "id": "S02",
+  "desc": "A locked, configured ML classifier flags out-of-spec results in QC; a human reviews and approves each flag before any batch decision; outputs are recorded in the QMS. Data: GxP records.",
+  "answers": {
+   "functions": [
+    "QC / LIMS"
+   ],
+   "impact": true,
+   "enters_records": true,
+   "autonomy": "decision_support",
+   "model_type": "ml",
+   "build": "configured",
+   "adaptive": "locked",
+   "data_sensitivity": "gxp_records",
+   "connections": [
+    "LIMS"
+   ],
+   "governance": "developing"
+  },
+  "golden": {
+   "overall": "HIGH",
+   "annex22": "Critical",
+   "stop_llm": false,
+   "stop_dynamic": false
+  }
+ },
+ {
+  "id": "S03",
+  "desc": "A continuously-learning predictive-maintenance model forecasts equipment failure on a non-GxP utility system; advisory only; no GxP records affected. Data: internal non-GxP.",
+  "answers": {
+   "functions": [
+    "Other"
+   ],
+   "impact": false,
+   "enters_records": false,
+   "autonomy": "advisory",
+   "model_type": "predictive",
+   "build": "cots",
+   "adaptive": "learning",
+   "data_sensitivity": "internal",
+   "connections": [
+    "External API / model provider"
+   ],
+   "governance": "established"
+  },
+  "golden": {
+   "overall": "LOW",
+   "annex22": "Non-critical",
+   "stop_llm": false,
+   "stop_dynamic": false
+  }
+ },
+ {
+  "id": "S04",
+  "desc": "A fine-tuned LLM automatically generates batch-release recommendations that act on GxP records without mandatory human review. Locked model. Data: GxP records.",
+  "answers": {
+   "functions": [
+    "Quality / QMS (deviation, CAPA)"
+   ],
+   "impact": true,
+   "enters_records": true,
+   "autonomy": "automated",
+   "model_type": "llm",
+   "build": "finetuned",
+   "adaptive": "locked",
+   "data_sensitivity": "gxp_records",
+   "connections": [
+    "QMS"
+   ],
+   "governance": "initial"
+  },
+  "golden": {
+   "overall": "HIGH",
+   "annex22": "Critical",
+   "stop_llm": true,
+   "stop_dynamic": false
+  }
+ },
+ {
+  "id": "S05",
+  "desc": "An off-the-shelf LLM triages incoming deviations and suggests a category; advisory; outputs are NOT entered into GxP records (informal use); could influence quality judgment. Locked. Data: internal.",
+  "answers": {
+   "functions": [
+    "Quality / QMS (deviation, CAPA)"
+   ],
+   "impact": true,
+   "enters_records": false,
+   "autonomy": "advisory",
+   "model_type": "llm",
+   "build": "cots",
+   "adaptive": "locked",
+   "data_sensitivity": "internal",
+   "connections": [
+    "None"
+   ],
+   "governance": "developing"
+  },
+  "golden": {
+   "overall": "MEDIUM",
+   "annex22": "Significant",
+   "stop_llm": true,
+   "stop_dynamic": false
+  }
+ },
+ {
+  "id": "S06",
+  "desc": "An off-the-shelf LLM answers employee questions about SOPs (a knowledge assistant). No patient-safety/product-quality/data-integrity impact; no GxP records; advisory. Locked. Data: internal.",
+  "answers": {
+   "functions": [
+    "Other"
+   ],
+   "impact": false,
+   "enters_records": false,
+   "autonomy": "advisory",
+   "model_type": "llm",
+   "build": "cots",
+   "adaptive": "locked",
+   "data_sensitivity": "internal",
+   "connections": [
+    "Document mgmt (Veeva / SharePoint)"
+   ],
+   "governance": "initial"
+  },
+  "golden": {
+   "overall": "LOW",
+   "annex22": "Non-critical",
+   "stop_llm": false,
+   "stop_dynamic": false
+  }
+ },
+ {
+  "id": "S07",
+  "desc": "A custom-built demand-forecasting model for commercial supply planning; no GxP impact; no GxP records; locked. Data: public/aggregate.",
+  "answers": {
+   "functions": [
+    "Supply chain"
+   ],
+   "impact": false,
+   "enters_records": false,
+   "autonomy": "advisory",
+   "model_type": "predictive",
+   "build": "custom",
+   "adaptive": "locked",
+   "data_sensitivity": "public",
+   "connections": [
+    "ERP"
+   ],
+   "governance": "advanced"
+  },
+  "golden": {
+   "overall": "LOW",
+   "annex22": "Non-critical",
+   "stop_llm": false,
+   "stop_dynamic": false
+  }
+ },
+ {
+  "id": "S08",
+  "desc": "A custom computer-vision model performs automated visual inspection of filled vials and automatically rejects units, acting on GxP batch records without per-unit human review. Locked. Data: GxP records.",
+  "answers": {
+   "functions": [
+    "Manufacturing / MES"
+   ],
+   "impact": true,
+   "enters_records": true,
+   "autonomy": "automated",
+   "model_type": "ml",
+   "build": "custom",
+   "adaptive": "locked",
+   "data_sensitivity": "gxp_records",
+   "connections": [
+    "MES"
+   ],
+   "governance": "established"
+  },
+  "golden": {
+   "overall": "HIGH",
+   "annex22": "Critical",
+   "stop_llm": false,
+   "stop_dynamic": false
+  }
+ },
+ {
+  "id": "S09",
+  "desc": "A fine-tuned, continuously-learning ML model predicts dosing for clinical decision support; a clinician reviews each recommendation; outputs are not auto-entered into GxP records but influence patient safety. Data: personal/PHI.",
+  "answers": {
+   "functions": [
+    "Clinical / CTMS"
+   ],
+   "impact": true,
+   "enters_records": false,
+   "autonomy": "decision_support",
+   "model_type": "ml",
+   "build": "finetuned",
+   "adaptive": "learning",
+   "data_sensitivity": "personal_phi",
+   "connections": [
+    "CTMS / eTMF"
+   ],
+   "governance": "developing"
+  },
+  "golden": {
+   "overall": "MEDIUM",
+   "annex22": "Significant",
+   "stop_llm": false,
+   "stop_dynamic": true
+  }
+ },
+ {
+  "id": "S10",
+  "desc": "A configured LLM drafts CAPA records that are entered into the QMS after advisory human review; affects product quality/data integrity. Locked. Data: GxP records.",
+  "answers": {
+   "functions": [
+    "Quality / QMS (deviation, CAPA)"
+   ],
+   "impact": true,
+   "enters_records": true,
+   "autonomy": "advisory",
+   "model_type": "llm",
+   "build": "configured",
+   "adaptive": "locked",
+   "data_sensitivity": "gxp_records",
+   "connections": [
+    "QMS"
+   ],
+   "governance": "established"
+  },
+  "golden": {
+   "overall": "HIGH",
+   "annex22": "Critical",
+   "stop_llm": true,
+   "stop_dynamic": false
+  }
+ },
+ {
+  "id": "S11",
+  "desc": "A rule-based (non-AI/deterministic) automation bot transfers values between systems and writes to GxP records automatically; no ML model. Data: GxP records.",
+  "answers": {
+   "functions": [
+    "Manufacturing / MES"
+   ],
+   "impact": true,
+   "enters_records": true,
+   "autonomy": "automated",
+   "model_type": "other",
+   "build": "cots",
+   "adaptive": "locked",
+   "data_sensitivity": "gxp_records",
+   "connections": [
+    "MES"
+   ],
+   "governance": "established"
+  },
+  "golden": {
+   "overall": "HIGH",
+   "annex22": "Critical",
+   "stop_llm": false,
+   "stop_dynamic": false
+  }
+ },
+ {
+  "id": "S12",
+  "desc": "An off-the-shelf LLM summarizes published scientific literature for a research team; no GxP impact; no GxP records; advisory; locked. Data: public.",
+  "answers": {
+   "functions": [
+    "Other"
+   ],
+   "impact": false,
+   "enters_records": false,
+   "autonomy": "advisory",
+   "model_type": "llm",
+   "build": "cots",
+   "adaptive": "locked",
+   "data_sensitivity": "public",
+   "connections": [
+    "External API / model provider"
+   ],
+   "governance": "initial"
+  },
+  "golden": {
+   "overall": "LOW",
+   "annex22": "Non-critical",
+   "stop_llm": false,
+   "stop_dynamic": false
+  }
+ }
+]

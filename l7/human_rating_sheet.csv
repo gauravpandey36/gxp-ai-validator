@@ -1,0 +1,13 @@
+scenario_id,description,rater_id,human_overall(HIGH/MEDIUM/LOW),human_annex22(Critical/Significant/Non-critical),llm_in_critical_stop(Y/N),dynamic_in_critical_stop(Y/N)
+S01,A fine-tuned LLM drafts Module 3 regulatory submission sections; outputs flow into the submission dossier (a GxP record). A human reviews but does not check every citation. The model is periodically retrained on new submissions. Data: GxP records.,,,,,
+S02,"A locked, configured ML classifier flags out-of-spec results in QC; a human reviews and approves each flag before any batch decision; outputs are recorded in the QMS. Data: GxP records.",,,,,
+S03,A continuously-learning predictive-maintenance model forecasts equipment failure on a non-GxP utility system; advisory only; no GxP records affected. Data: internal non-GxP.,,,,,
+S04,A fine-tuned LLM automatically generates batch-release recommendations that act on GxP records without mandatory human review. Locked model. Data: GxP records.,,,,,
+S05,An off-the-shelf LLM triages incoming deviations and suggests a category; advisory; outputs are NOT entered into GxP records (informal use); could influence quality judgment. Locked. Data: internal.,,,,,
+S06,An off-the-shelf LLM answers employee questions about SOPs (a knowledge assistant). No patient-safety/product-quality/data-integrity impact; no GxP records; advisory. Locked. Data: internal.,,,,,
+S07,A custom-built demand-forecasting model for commercial supply planning; no GxP impact; no GxP records; locked. Data: public/aggregate.,,,,,
+S08,"A custom computer-vision model performs automated visual inspection of filled vials and automatically rejects units, acting on GxP batch records without per-unit human review. Locked. Data: GxP records.",,,,,
+S09,"A fine-tuned, continuously-learning ML model predicts dosing for clinical decision support; a clinician reviews each recommendation; outputs are not auto-entered into GxP records but influence patient safety. Data: personal/PHI.",,,,,
+S10,A configured LLM drafts CAPA records that are entered into the QMS after advisory human review; affects product quality/data integrity. Locked. Data: GxP records.,,,,,
+S11,A rule-based (non-AI/deterministic) automation bot transfers values between systems and writes to GxP records automatically; no ML model. Data: GxP records.,,,,,
+S12,An off-the-shelf LLM summarizes published scientific literature for a research team; no GxP impact; no GxP records; advisory; locked. Data: public.,,,,,

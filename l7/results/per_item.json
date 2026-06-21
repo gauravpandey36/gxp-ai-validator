@@ -1,0 +1,316 @@
+[
+  {
+    "id": "S01",
+    "golden": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "stop_llm": true,
+      "stop_dynamic": true
+    },
+    "engine": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": true,
+      "dynamic_stop": true
+    },
+    "claude": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": true,
+      "dynamic_stop": true
+    },
+    "llama": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": true,
+      "dynamic_stop": true
+    }
+  },
+  {
+    "id": "S02",
+    "golden": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "stop_llm": false,
+      "stop_dynamic": false
+    },
+    "engine": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "claude": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "llama": {
+      "overall": "MEDIUM",
+      "annex22": "Critical",
+      "llm_stop": false,
+      "dynamic_stop": false
+    }
+  },
+  {
+    "id": "S03",
+    "golden": {
+      "overall": "LOW",
+      "annex22": "Non-critical",
+      "stop_llm": false,
+      "stop_dynamic": false
+    },
+    "engine": {
+      "overall": "LOW",
+      "annex22": "Non-critical",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "claude": {
+      "overall": "LOW",
+      "annex22": "Non-critical",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "llama": {}
+  },
+  {
+    "id": "S04",
+    "golden": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "stop_llm": true,
+      "stop_dynamic": false
+    },
+    "engine": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": true,
+      "dynamic_stop": false
+    },
+    "claude": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": true,
+      "dynamic_stop": false
+    },
+    "llama": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": true,
+      "dynamic_stop": false
+    }
+  },
+  {
+    "id": "S05",
+    "golden": {
+      "overall": "MEDIUM",
+      "annex22": "Significant",
+      "stop_llm": true,
+      "stop_dynamic": false
+    },
+    "engine": {
+      "overall": "MEDIUM",
+      "annex22": "Significant",
+      "llm_stop": true,
+      "dynamic_stop": false
+    },
+    "claude": {
+      "overall": "MEDIUM",
+      "annex22": "Significant",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "llama": {
+      "overall": "MEDIUM",
+      "annex22": "Significant",
+      "llm_stop": false,
+      "dynamic_stop": false
+    }
+  },
+  {
+    "id": "S06",
+    "golden": {
+      "overall": "LOW",
+      "annex22": "Non-critical",
+      "stop_llm": false,
+      "stop_dynamic": false
+    },
+    "engine": {
+      "overall": "LOW",
+      "annex22": "Non-critical",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "claude": {
+      "overall": "LOW",
+      "annex22": "Non-critical",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "llama": {
+      "overall": "LOW",
+      "annex22": "Non-critical",
+      "llm_stop": false,
+      "dynamic_stop": false
+    }
+  },
+  {
+    "id": "S07",
+    "golden": {
+      "overall": "LOW",
+      "annex22": "Non-critical",
+      "stop_llm": false,
+      "stop_dynamic": false
+    },
+    "engine": {
+      "overall": "LOW",
+      "annex22": "Non-critical",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "claude": {
+      "overall": "LOW",
+      "annex22": "Non-critical",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "llama": {
+      "overall": "LOW",
+      "annex22": "Non-critical",
+      "llm_stop": false,
+      "dynamic_stop": false
+    }
+  },
+  {
+    "id": "S08",
+    "golden": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "stop_llm": false,
+      "stop_dynamic": false
+    },
+    "engine": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "claude": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "llama": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": false,
+      "dynamic_stop": false
+    }
+  },
+  {
+    "id": "S09",
+    "golden": {
+      "overall": "MEDIUM",
+      "annex22": "Significant",
+      "stop_llm": false,
+      "stop_dynamic": true
+    },
+    "engine": {
+      "overall": "MEDIUM",
+      "annex22": "Significant",
+      "llm_stop": false,
+      "dynamic_stop": true
+    },
+    "claude": {
+      "overall": "HIGH",
+      "annex22": "Significant",
+      "llm_stop": false,
+      "dynamic_stop": true
+    },
+    "llama": {
+      "overall": "MEDIUM",
+      "annex22": "Significant",
+      "llm_stop": false,
+      "dynamic_stop": true
+    }
+  },
+  {
+    "id": "S10",
+    "golden": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "stop_llm": true,
+      "stop_dynamic": false
+    },
+    "engine": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": true,
+      "dynamic_stop": false
+    },
+    "claude": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": true,
+      "dynamic_stop": false
+    },
+    "llama": {}
+  },
+  {
+    "id": "S11",
+    "golden": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "stop_llm": false,
+      "stop_dynamic": false
+    },
+    "engine": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "claude": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "llama": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": false,
+      "dynamic_stop": false
+    }
+  },
+  {
+    "id": "S12",
+    "golden": {
+      "overall": "LOW",
+      "annex22": "Non-critical",
+      "stop_llm": false,
+      "stop_dynamic": false
+    },
+    "engine": {
+      "overall": "LOW",
+      "annex22": "Non-critical",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "claude": {
+      "overall": "LOW",
+      "annex22": "Non-critical",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "llama": {
+      "overall": "LOW",
+      "annex22": "Non-critical",
+      "llm_stop": false,
+      "dynamic_stop": false
+    }
+  }
+]
