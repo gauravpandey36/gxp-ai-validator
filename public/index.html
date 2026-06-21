@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GxP AI Validation Companion</title>
+<style>
+  :root{--navy:#051c2c;--ink:#1c2b33;--muted:#5a6b73;--line:#e0e4e7;--accent:#2b50ff;--accentbg:#eef1ff;
+    --ok:#0e7c7b;--okbg:#e3f6f2;--warn:#b5780b;--warnbg:#fbf3e1;--bad:#b03a3a;--badbg:#fbebeb;--surface:#f6f8f9;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,sans-serif;color:var(--ink);background:#fbfcfd;line-height:1.55}
+  .wrap{max-width:920px;margin:0 auto;padding:0 20px}
+  header{background:var(--navy);color:#fff;padding:26px 0}
+  header h1{font-size:22px;font-weight:600}
+  header p{color:#aebfc7;font-size:14px;margin-top:4px}
+  .badge{display:inline-block;background:#0c3a4e;color:#cfe;font-size:12px;padding:3px 9px;border-radius:3px;margin-top:8px}
+  .note{background:var(--warnbg);border:1px solid #f0dcae;color:#7a5408;font-size:12.5px;padding:9px 14px;border-radius:4px;margin:14px 0}
+  .card{background:#fff;border:1px solid var(--line);border-radius:6px;padding:20px 22px;margin:16px 0}
+  h2{font-size:18px;font-weight:600;color:var(--navy);margin-bottom:4px}
+  .sub{color:var(--muted);font-size:13.5px;margin-bottom:16px}
+  .q{margin:16px 0;padding-bottom:14px;border-bottom:1px solid var(--line)}
+  .q:last-child{border-bottom:0}
+  .q .lab{font-weight:600;font-size:14.5px;margin-bottom:8px}
+  .opts label{display:block;font-size:14px;padding:5px 0;cursor:pointer;color:var(--ink)}
+  .opts input{margin-right:8px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chips label{border:1px solid var(--line);border-radius:4px;padding:6px 11px;font-size:13px;cursor:pointer}
+  .chips input{margin-right:6px}
+  textarea,input[type=text]{width:100%;font-family:inherit;font-size:13.5px;padding:9px 11px;border:1px solid var(--line);border-radius:4px;color:var(--ink)}
+  textarea:focus,input:focus{outline:none;border-color:var(--accent)}
+  button{font-family:inherit;font-size:15px;font-weight:600;padding:12px 22px;border-radius:4px;border:1px solid var(--navy);background:var(--navy);color:#fff;cursor:pointer}
+  button:hover{background:#0a3043} button.ghost{background:#fff;color:var(--navy)} button:disabled{opacity:.5;cursor:not-allowed}
+  .pill{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:3px}
+  .HIGH{background:var(--badbg);color:var(--bad)} .MEDIUM{background:var(--warnbg);color:var(--warn)} .LOW{background:var(--okbg);color:var(--ok)}
+  table{width:100%;border-collapse:collapse;font-size:13px;margin-top:10px}
+  th{text-align:left;background:var(--surface);color:var(--navy);font-size:11.5px;text-transform:uppercase;letter-spacing:.04em;padding:8px 10px;border-bottom:2px solid var(--navy)}
+  td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  .GAP{color:var(--bad);font-weight:600}.Provided{color:var(--ok);font-weight:600}
+  .sev-high{color:var(--bad)}.sev-medium{color:var(--warn)}.sev-low{color:var(--muted)}
+  .kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:8px 0}
+  .kv .b{background:var(--surface);border-radius:5px;padding:11px}
+  .kv .b .l{font-size:11px;color:var(--muted)} .kv .b .v{font-size:14px;font-weight:600;color:var(--navy)}
+  .narr{background:var(--accentbg);border-left:3px solid var(--accent);padding:12px 14px;border-radius:0 4px 4px 0;font-size:14px;white-space:pre-wrap}
+  .keyrow{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:10px;font-size:13px;color:var(--muted)}
+  .keyrow input{flex:1;min-width:200px}
+  footer{color:var(--muted);font-size:12px;padding:24px 0;line-height:1.7}
+  .hide{display:none}
+  @media print{header,.note,.keyrow,button,#intake,#scope-controls .ask{display:none}.card{border:0}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <h1>GxP AI Validation Companion <span class="badge">demo · synthetic</span></h1>
+  <p>Answer a short interview about your AI system. Get a risk classification, a control-by-control gap register against GxP/AI frameworks, and an inspector-ready readiness dossier.</p>
+</div></header>
+
+<div class="wrap">
+  <div class="note"><b>Advisory only.</b> This tool drafts evidence and gaps; a Qualified Person / QA must review and sign. It does not validate anything by itself, makes no release decision, and uses synthetic/educational logic. Not regulatory advice. Risk tiers are computed deterministically; an AI model only drafts the written summary.</div>
+
+  <!-- STEP 1 INTAKE -->
+  <div class="card" id="intake">
+    <h2>Step 1 — Tell the agent about your AI system</h2>
+    <p class="sub">~10 questions. Each maps to a regulatory basis (GAMP 5, EU Annex 22, FDA CSA / credibility framework, 21 CFR Part 11, ICH Q9, EU AI Act, NIST AI RMF, ISO 42001).</p>
+    <div id="qs"></div>
+    <button onclick="doScope()">Scope my system →</button>
+  </div>
+
+  <!-- STEP 2 SCOPE + EVIDENCE -->
+  <div class="card hide" id="scope">
+    <h2>Step 2 — Risk classification &amp; evidence check</h2>
+    <div id="risk-box"></div>
+    <div id="scope-controls"></div>
+    <div class="q"><div class="lab">Optional: paste a system manifest (models, APIs, MCP servers, data connections, requirements.txt, OpenAPI). The agent builds a best-effort AI bill-of-materials.</div>
+      <textarea id="manifest" rows="4" placeholder="e.g. model: claude-sonnet; provider: anthropic; mcp: filesystem, qdrant; api: /v1/generate; store: pgvector, LIMS ..."></textarea></div>
+    <div class="q"><div class="lab">Attestation</div>
+      <input type="text" id="att-name" placeholder="Your name"><div style="height:8px"></div>
+      <input type="text" id="att-role" placeholder="Role (e.g. QA Manager / Qualified Person)"><div style="height:8px"></div>
+      <label style="font-size:13.5px"><input type="checkbox" id="att-ck"> I attest the answers above are accurate to the best of my knowledge.</label></div>
+    <button onclick="doAssess()" id="genbtn">Generate readiness dossier →</button>
+  </div>
+
+  <!-- STEP 3 DOSSIER -->
+  <div class="card hide" id="dossier"></div>
+
+  <footer>
+    <b>How testing works.</b> This demo runs on the author's API key (rate-limited &amp; budget-capped) so you can try it with zero setup. To run it inside your own environment, self-host and set your own <code>ANTHROPIC_API_KEY</code> (see README) — your data and key never leave your system. Power users can paste their own key below to bypass the demo limit.
+    <div class="keyrow"><span>Use my own key (optional):</span><input type="text" id="byo" placeholder="sk-ant-... (optional; used for this session only, never stored)"></div>
+    <div style="margin-top:14px">© 2026 Gourav Pandey · independent &amp; self-built · synthetic/educational · not sponsored or endorsed by any employer · <span id="spend"></span></div>
+  </footer>
+</div>
+
+<script>
+const QS=[
+ {k:"functions",t:"multi",lab:"Which GxP function(s) does this AI serve?",o:["Manufacturing / MES","QC / LIMS","Quality / QMS (deviation, CAPA)","Regulatory authoring","Pharmacovigilance","Clinical / CTMS","Supply chain","Other"]},
+ {k:"impact",t:"one",lab:"Could the AI's outputs affect patient safety, product quality, or data integrity?",o:[["yes","Yes"],["no","No"]]},
+ {k:"enters_records",t:"one",lab:"Do outputs enter, modify, or trigger changes to GxP-controlled records?",o:[["yes","Yes — outputs flow into GxP records"],["no","No — informal use only"]]},
+ {k:"autonomy",t:"one",lab:"What is the level of autonomy?",o:[["decision_support","Decision support — human reviews & approves every output"],["advisory","Advisory — human may act without reviewing every output"],["automated","Automated — AI acts on GxP records without mandatory human review"]]},
+ {k:"model_type",t:"one",lab:"What type of model is it?",o:[["llm","Generative AI / LLM"],["ml","Traditional ML (classifier / regression)"],["predictive","Predictive / forecasting"],["other","Other / rule-based"]]},
+ {k:"build",t:"one",lab:"How was it built?",o:[["cots","Commercial off-the-shelf (as-is)"],["configured","Configured COTS"],["finetuned","Fine-tuned foundation model"],["custom","Custom-built model"]]},
+ {k:"adaptive",t:"one",lab:"Does the model learn / retrain after deployment?",o:[["locked","Locked — no change without revalidation"],["learning","Continuously learning / periodically retrained"]]},
+ {k:"data_sensitivity",t:"one",lab:"Most sensitive data it processes or trains on?",o:[["public","Public / non-sensitive"],["internal","Internal non-GxP"],["gxp_records","GxP records"],["personal_phi","Personal data / PHI"]]},
+ {k:"connections",t:"multi",lab:"What does it connect to?",o:["LIMS","MES","QMS","CTMS / eTMF","ERP","Document mgmt (Veeva / SharePoint)","Vector database","External API / model provider","None"]},
+ {k:"governance",t:"one",lab:"Current AI governance maturity?",o:[["none","None (no policy, inventory, or validation SOP)"],["initial","Initial (policy drafted)"],["developing","Developing (some tools validated, SOP exists)"],["established","Established (committee, validated tools, periodic review)"],["advanced","Advanced (AI RMF, registry, continuous monitoring)"]]}
+];
+const A={}; let CTRLS=[];
+function renderQs(){
+ document.getElementById('qs').innerHTML=QS.map(q=>{
+  let body;
+  if(q.t==="multi"){A[q.k]=[];body=`<div class="chips">`+q.o.map((o,i)=>`<label><input type="checkbox" onchange="tog('${q.k}','${o.replace(/'/g,"")}',this)">${o}</label>`).join("")+`</div>`;}
+  else{body=`<div class="opts">`+q.o.map(o=>`<label><input type="radio" name="${q.k}" onchange="A['${q.k}']='${o[0]}'">${o[1]}</label>`).join("")+`</div>`;}
+  return `<div class="q"><div class="lab">${q.lab}</div>${body}</div>`;
+ }).join("");
+}
+function tog(k,v,el){A[k]=A[k]||[];if(el.checked)A[k].push(v);else A[k]=A[k].filter(x=>x!==v);}
+function api(path,b){return fetch(path,{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(b)}).then(r=>r.json());}
+
+async function doScope(){
+ const r=await api("/api/scope",{answers:A});
+ const f=r.risk.frameworks;
+ document.getElementById('risk-box').innerHTML=
+  `<div style="margin:6px 0 12px"><span class="pill ${r.risk.overall}">Overall risk: ${r.risk.overall}</span></div>`+
+  `<div class="kv">`+Object.entries(f).map(([k,v])=>`<div class="b"><div class="l">${k}</div><div class="v">${v}</div></div>`).join("")+`</div>`+
+  `<div class="sub" style="margin-top:6px">${r.risk.rationale.join(" · ")}</div>`;
+ CTRLS=r.controls;
+ document.getElementById('scope-controls').innerHTML=
+  `<h2 style="font-size:15px;margin-top:14px">Applicable controls — do you have the evidence? (${CTRLS.length} in scope)</h2>
+   <p class="sub">For each control mark whether documented evidence exists. Gaps drive your readiness score.</p>`+
+  CTRLS.map(c=>`<div class="q"><div class="lab"><span class="sev-${c.severity}">[${c.severity}]</span> ${c.element} — <span style="font-weight:400">${c.question}</span><div class="sub" style="margin:3px 0 0">Basis: ${c.framework} · Evidence: ${c.evidence}</div></div>
+    <div class="opts ask"><label><input type="radio" name="ev_${c.id}" onchange="EV('${c.id}',true)"> Yes, documented</label><label><input type="radio" name="ev_${c.id}" onchange="EV('${c.id}',false)"> No / not yet</label></div>
+    <input type="text" class="ask" placeholder="optional note / reference" oninput="EVnote('${c.id}',this.value)"></div>`).join("");
+ show('scope');
+}
+const EVID={};
+function EV(id,have){EVID[id]=EVID[id]||{};EVID[id].have=have;}
+function EVnote(id,n){EVID[id]=EVID[id]||{};EVID[id].note=n;}
+
+async function doAssess(){
+ const btn=document.getElementById('genbtn');btn.disabled=true;btn.textContent="Generating…";
+ const r=await api("/api/assess",{answers:A,evidence:EVID,manifest:document.getElementById('manifest').value,
+   attestation:{name:document.getElementById('att-name').value,role:document.getElementById('att-role').value,attested:document.getElementById('att-ck').checked},
+   byo_key:document.getElementById('byo').value});
+ btn.disabled=false;btn.textContent="Generate readiness dossier →";
+ if(r.error){alert(r.error);return;}
+ renderDossier(r);
+}
+function renderDossier(r){
+ const reg=r.register;const bom=r.aibom;
+ const bomShown=["models","providers","mcp_servers","data_stores","frameworks","apis"].filter(k=>bom[k]&&bom[k].length);
+ document.getElementById('dossier').innerHTML=
+  `<h2>Validation-readiness dossier</h2><p class="sub">Generated ${r.generated_at} · advisory · synthetic logic</p>
+   <div class="kv">
+     <div class="b"><div class="l">Overall risk</div><div class="v"><span class="pill ${r.risk.overall}">${r.risk.overall}</span></div></div>
+     <div class="b"><div class="l">Readiness</div><div class="v">${reg.readiness_pct}%</div></div>
+     <div class="b"><div class="l">Controls met</div><div class="v">${reg.controls_met}/${reg.controls_total}</div></div>
+     <div class="b"><div class="l">High-severity gaps</div><div class="v">${reg.high_severity_gaps}</div></div>
+   </div>
+   <p style="margin:10px 0;font-weight:600;color:${reg.high_severity_gaps?'var(--bad)':'var(--ok)'}">${r.verdict}</p>
+   <h2 style="font-size:15px;margin-top:16px">Executive summary</h2><div class="narr">${(r.narrative||"").replace(/</g,"&lt;")}</div>
+   <h2 style="font-size:15px;margin-top:16px">AI bill-of-materials (best-effort)</h2>
+   ${bomShown.length?`<div class="kv">`+bomShown.map(k=>`<div class="b"><div class="l">${k.replace('_',' ')}</div><div class="v" style="font-size:12.5px">${bom[k].join(", ")}</div></div>`).join("")+`</div>`:`<p class="sub">No manifest parsed — inventory relies on interview answers.</p>`}
+   <p class="sub">Coverage: ${bom.coverage}</p>
+   <h2 style="font-size:15px;margin-top:16px">Control gap register</h2>
+   <table><tr><th>Control</th><th>Basis</th><th>Sev</th><th>Status</th></tr>
+   ${reg.rows.map(x=>`<tr><td><b>${x.element}</b><br><span class="sub">${x.control}</span>${x.note?`<br><span class="sub">note: ${x.note}</span>`:""}</td><td class="sub">${x.framework}</td><td class="sev-${x.severity}">${x.severity}</td><td class="${x.status}">${x.status}</td></tr>`).join("")}
+   </table>
+   <div style="margin-top:16px"><button class="ghost" onclick="window.print()">Print / Save as PDF</button>
+   <button class="ghost" onclick="dl()">Download JSON</button></div>
+   <p class="sub" style="margin-top:10px">Attested by: ${r.attestation.name||"—"} (${r.attestation.role||"—"}) · ${r.attestation.attested?"attested":"NOT attested"}. A Qualified Person / QA must independently review and sign.</p>`;
+ window._dossier=r;show('dossier');document.getElementById('dossier').scrollIntoView({behavior:"smooth"});
+ fetch('/api/status').then(r=>r.json()).then(s=>document.getElementById('spend').textContent=`demo budget used: $${s.spent_usd} / $${s.cap_usd}`);
+}
+function dl(){const b=new Blob([JSON.stringify(window._dossier,null,2)],{type:"application/json"});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download="gxp_ai_validation_dossier.json";a.click();}
+function show(id){document.getElementById(id).classList.remove('hide');}
+renderQs();
+fetch('/api/status').then(r=>r.json()).then(s=>document.getElementById('spend').textContent=`demo budget used: $${s.spent_usd} / $${s.cap_usd}`).catch(()=>{});
+</script>
+</body>
+</html>
