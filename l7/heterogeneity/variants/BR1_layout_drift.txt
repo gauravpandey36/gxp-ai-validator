@@ -1,0 +1,1 @@
+Batch No: GC301-DP-0042  Product: gelizumab 150 mg lyophilized  Fill weight target: 2.10 mL  Result: 2.08 mL  Operator: A.K.  Date: 14-Mar-2026  Shelf temp (primary drying): -25 C  Chamber pressure: 100 mTorr  Residual moisture: 1.2%  Result: PASS

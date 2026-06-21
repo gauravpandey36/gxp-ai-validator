@@ -1,0 +1,24 @@
+{
+  "BR1": {
+    "batch_no": "GC301-DP-0042",
+    "fill_result_ml": "2.08",
+    "shelf_temp_c": "-25",
+    "chamber_pressure_mtorr": "100",
+    "residual_moisture_pct": "1.2",
+    "disposition": "PASS"
+  },
+  "BR2": {
+    "batch_no": "GC301-DS-0017",
+    "recorded_ph": "3.58",
+    "hold_min": "60",
+    "temp_c": "19",
+    "titer_g_l": "4.2"
+  },
+  "BR3": {
+    "deviation_id": "DV-2026-031",
+    "excursion_temp_c": "-18",
+    "duration_min": "12",
+    "capa_id": "CAPA-2026-019",
+    "disposition": "APPROVED"
+  }
+}

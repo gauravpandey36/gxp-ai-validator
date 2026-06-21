@@ -236,7 +236,7 @@
       "dynamic_stop": true
     },
     "llama": {
-      "overall": "HIGH",
+      "overall": "MEDIUM",
       "annex22": "Significant",
       "llm_stop": false,
       "dynamic_stop": true
@@ -367,7 +367,7 @@
       "dynamic_stop": false
     },
     "claude": {
-      "overall": "HIGH",
+      "overall": "MEDIUM",
       "annex22": "Significant",
       "llm_stop": false,
       "dynamic_stop": false
@@ -403,8 +403,1023 @@
     "llama": {
       "overall": "HIGH",
       "annex22": "Critical",
+      "llm_stop": false,
+      "dynamic_stop": true
+    }
+  },
+  {
+    "id": "S16",
+    "golden": {
+      "overall": "MEDIUM",
+      "annex22": "Significant",
+      "stop_llm": false,
+      "stop_dynamic": false,
+      "stop_agentic": false,
+      "label_source": "rule-derived"
+    },
+    "engine": {
+      "overall": "MEDIUM",
+      "annex22": "Significant",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "claude": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "llama": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": false,
+      "dynamic_stop": true
+    }
+  },
+  {
+    "id": "S17",
+    "golden": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "stop_llm": false,
+      "stop_dynamic": false,
+      "stop_agentic": false,
+      "label_source": "rule-derived"
+    },
+    "engine": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "claude": {
+      "overall": "MEDIUM",
+      "annex22": "Significant",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "llama": {
+      "overall": "MEDIUM",
+      "annex22": "Critical",
+      "llm_stop": false,
+      "dynamic_stop": false
+    }
+  },
+  {
+    "id": "S18",
+    "golden": {
+      "overall": "LOW",
+      "annex22": "Non-critical",
+      "stop_llm": false,
+      "stop_dynamic": false,
+      "stop_agentic": false,
+      "label_source": "rule-derived"
+    },
+    "engine": {
+      "overall": "LOW",
+      "annex22": "Non-critical",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "claude": {
+      "overall": "LOW",
+      "annex22": "Significant",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "llama": {
+      "overall": "LOW",
+      "annex22": "Non-critical",
+      "llm_stop": false,
+      "dynamic_stop": false
+    }
+  },
+  {
+    "id": "S19",
+    "golden": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "stop_llm": true,
+      "stop_dynamic": false,
+      "stop_agentic": false,
+      "label_source": "rule-derived"
+    },
+    "engine": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": true,
+      "dynamic_stop": false
+    },
+    "claude": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": true,
+      "dynamic_stop": false
+    },
+    "llama": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": true,
+      "dynamic_stop": false
+    }
+  },
+  {
+    "id": "S20",
+    "golden": {
+      "overall": "MEDIUM",
+      "annex22": "Significant",
+      "stop_llm": true,
+      "stop_dynamic": false,
+      "stop_agentic": false,
+      "label_source": "rule-derived"
+    },
+    "engine": {
+      "overall": "MEDIUM",
+      "annex22": "Significant",
+      "llm_stop": true,
+      "dynamic_stop": false
+    },
+    "claude": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": true,
+      "dynamic_stop": false
+    },
+    "llama": {
+      "overall": "MEDIUM",
+      "annex22": "Significant",
+      "llm_stop": false,
+      "dynamic_stop": false
+    }
+  },
+  {
+    "id": "S21",
+    "golden": {
+      "overall": "MEDIUM",
+      "annex22": "Significant",
+      "stop_llm": false,
+      "stop_dynamic": true,
+      "stop_agentic": false,
+      "label_source": "rule-derived"
+    },
+    "engine": {
+      "overall": "MEDIUM",
+      "annex22": "Significant",
+      "llm_stop": false,
+      "dynamic_stop": true
+    },
+    "claude": {
+      "overall": "HIGH",
+      "annex22": "Significant",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "llama": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": false,
+      "dynamic_stop": true
+    }
+  },
+  {
+    "id": "S22",
+    "golden": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "stop_llm": true,
+      "stop_dynamic": false,
+      "stop_agentic": false,
+      "label_source": "rule-derived"
+    },
+    "engine": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": true,
+      "dynamic_stop": false
+    },
+    "claude": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": true,
+      "dynamic_stop": false
+    },
+    "llama": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": true,
+      "dynamic_stop": false
+    }
+  },
+  {
+    "id": "S23",
+    "golden": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "stop_llm": false,
+      "stop_dynamic": false,
+      "stop_agentic": false,
+      "label_source": "rule-derived"
+    },
+    "engine": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "claude": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "llama": {
+      "overall": "MEDIUM",
+      "annex22": "Critical",
+      "llm_stop": false,
+      "dynamic_stop": false
+    }
+  },
+  {
+    "id": "S24",
+    "golden": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "stop_llm": false,
+      "stop_dynamic": true,
+      "stop_agentic": true,
+      "label_source": "rule-derived"
+    },
+    "engine": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": false,
+      "dynamic_stop": true
+    },
+    "claude": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "llama": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": false,
+      "dynamic_stop": true
+    }
+  },
+  {
+    "id": "S25",
+    "golden": {
+      "overall": "LOW",
+      "annex22": "Non-critical",
+      "stop_llm": false,
+      "stop_dynamic": false,
+      "stop_agentic": false,
+      "label_source": "rule-derived"
+    },
+    "engine": {
+      "overall": "LOW",
+      "annex22": "Non-critical",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "claude": {
+      "overall": "LOW",
+      "annex22": "Non-critical",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "llama": {
+      "overall": "MEDIUM",
+      "annex22": "Significant",
+      "llm_stop": false,
+      "dynamic_stop": false
+    }
+  },
+  {
+    "id": "S26",
+    "golden": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "stop_llm": true,
+      "stop_dynamic": false,
+      "stop_agentic": false,
+      "label_source": "rule-derived"
+    },
+    "engine": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": true,
+      "dynamic_stop": false
+    },
+    "claude": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": true,
+      "dynamic_stop": false
+    },
+    "llama": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": true,
+      "dynamic_stop": false
+    }
+  },
+  {
+    "id": "S27",
+    "golden": {
+      "overall": "MEDIUM",
+      "annex22": "Significant",
+      "stop_llm": true,
+      "stop_dynamic": false,
+      "stop_agentic": false,
+      "label_source": "rule-derived"
+    },
+    "engine": {
+      "overall": "MEDIUM",
+      "annex22": "Significant",
+      "llm_stop": true,
+      "dynamic_stop": false
+    },
+    "claude": {
+      "overall": "LOW",
+      "annex22": "Significant",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "llama": {
+      "overall": "MEDIUM",
+      "annex22": "Significant",
+      "llm_stop": false,
+      "dynamic_stop": false
+    }
+  },
+  {
+    "id": "S28",
+    "golden": {
+      "overall": "LOW",
+      "annex22": "Non-critical",
+      "stop_llm": false,
+      "stop_dynamic": false,
+      "stop_agentic": false,
+      "label_source": "rule-derived"
+    },
+    "engine": {
+      "overall": "LOW",
+      "annex22": "Non-critical",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "claude": {
+      "overall": "MEDIUM",
+      "annex22": "Significant",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "llama": {
+      "overall": "LOW",
+      "annex22": "Non-critical",
+      "llm_stop": false,
+      "dynamic_stop": false
+    }
+  },
+  {
+    "id": "S29",
+    "golden": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "stop_llm": false,
+      "stop_dynamic": true,
+      "stop_agentic": false,
+      "label_source": "rule-derived"
+    },
+    "engine": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": false,
+      "dynamic_stop": true
+    },
+    "claude": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "llama": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": false,
+      "dynamic_stop": true
+    }
+  },
+  {
+    "id": "S30",
+    "golden": {
+      "overall": "MEDIUM",
+      "annex22": "Significant",
+      "stop_llm": true,
+      "stop_dynamic": false,
+      "stop_agentic": false,
+      "label_source": "rule-derived"
+    },
+    "engine": {
+      "overall": "MEDIUM",
+      "annex22": "Significant",
+      "llm_stop": true,
+      "dynamic_stop": false
+    },
+    "claude": {
+      "overall": "HIGH",
+      "annex22": "Significant",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "llama": {
+      "overall": "MEDIUM",
+      "annex22": "Critical",
+      "llm_stop": true,
+      "dynamic_stop": false
+    }
+  },
+  {
+    "id": "S31",
+    "golden": {
+      "overall": "LOW",
+      "annex22": "Non-critical",
+      "stop_llm": false,
+      "stop_dynamic": false,
+      "stop_agentic": false,
+      "label_source": "rule-derived"
+    },
+    "engine": {
+      "overall": "LOW",
+      "annex22": "Non-critical",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "claude": {
+      "overall": "MEDIUM",
+      "annex22": "Significant",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "llama": {
+      "overall": "MEDIUM",
+      "annex22": "Significant",
+      "llm_stop": false,
+      "dynamic_stop": false
+    }
+  },
+  {
+    "id": "S32",
+    "golden": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "stop_llm": true,
+      "stop_dynamic": true,
+      "stop_agentic": true,
+      "label_source": "rule-derived"
+    },
+    "engine": {
+      "overall": "HIGH",
+      "annex22": "Critical",
       "llm_stop": true,
       "dynamic_stop": true
+    },
+    "claude": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": true,
+      "dynamic_stop": false
+    },
+    "llama": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": true,
+      "dynamic_stop": true
+    }
+  },
+  {
+    "id": "S33",
+    "golden": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "stop_llm": false,
+      "stop_dynamic": false,
+      "stop_agentic": false,
+      "label_source": "rule-derived"
+    },
+    "engine": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "claude": {
+      "overall": "MEDIUM",
+      "annex22": "Significant",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "llama": {
+      "overall": "MEDIUM",
+      "annex22": "Critical",
+      "llm_stop": false,
+      "dynamic_stop": false
+    }
+  },
+  {
+    "id": "S34",
+    "golden": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "stop_llm": true,
+      "stop_dynamic": false,
+      "stop_agentic": false,
+      "label_source": "rule-derived"
+    },
+    "engine": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": true,
+      "dynamic_stop": false
+    },
+    "claude": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": true,
+      "dynamic_stop": false
+    },
+    "llama": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": true,
+      "dynamic_stop": false
+    }
+  },
+  {
+    "id": "S35",
+    "golden": {
+      "overall": "LOW",
+      "annex22": "Non-critical",
+      "stop_llm": false,
+      "stop_dynamic": false,
+      "stop_agentic": false,
+      "label_source": "rule-derived"
+    },
+    "engine": {
+      "overall": "LOW",
+      "annex22": "Non-critical",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "claude": {
+      "overall": "LOW",
+      "annex22": "Non-critical",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "llama": {
+      "overall": "LOW",
+      "annex22": "Non-critical",
+      "llm_stop": false,
+      "dynamic_stop": false
+    }
+  },
+  {
+    "id": "S36",
+    "golden": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "stop_llm": true,
+      "stop_dynamic": false,
+      "stop_agentic": false,
+      "label_source": "rule-derived"
+    },
+    "engine": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": true,
+      "dynamic_stop": false
+    },
+    "claude": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": true,
+      "dynamic_stop": false
+    },
+    "llama": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": true,
+      "dynamic_stop": false
+    }
+  },
+  {
+    "id": "S37",
+    "golden": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "stop_llm": true,
+      "stop_dynamic": false,
+      "stop_agentic": false,
+      "label_source": "rule-derived"
+    },
+    "engine": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": true,
+      "dynamic_stop": false
+    },
+    "claude": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": true,
+      "dynamic_stop": false
+    },
+    "llama": {
+      "overall": "MEDIUM",
+      "annex22": "Critical",
+      "llm_stop": true,
+      "dynamic_stop": false
+    }
+  },
+  {
+    "id": "S38",
+    "golden": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "stop_llm": false,
+      "stop_dynamic": true,
+      "stop_agentic": true,
+      "label_source": "rule-derived"
+    },
+    "engine": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": false,
+      "dynamic_stop": true
+    },
+    "claude": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": false,
+      "dynamic_stop": true
+    },
+    "llama": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": false,
+      "dynamic_stop": true
+    }
+  },
+  {
+    "id": "S39",
+    "golden": {
+      "overall": "MEDIUM",
+      "annex22": "Significant",
+      "stop_llm": true,
+      "stop_dynamic": false,
+      "stop_agentic": false,
+      "label_source": "rule-derived"
+    },
+    "engine": {
+      "overall": "MEDIUM",
+      "annex22": "Significant",
+      "llm_stop": true,
+      "dynamic_stop": false
+    },
+    "claude": {
+      "overall": "MEDIUM",
+      "annex22": "Significant",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "llama": {
+      "overall": "MEDIUM",
+      "annex22": "Critical",
+      "llm_stop": true,
+      "dynamic_stop": false
+    }
+  },
+  {
+    "id": "S40",
+    "golden": {
+      "overall": "LOW",
+      "annex22": "Non-critical",
+      "stop_llm": false,
+      "stop_dynamic": false,
+      "stop_agentic": false,
+      "label_source": "rule-derived"
+    },
+    "engine": {
+      "overall": "LOW",
+      "annex22": "Non-critical",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "claude": {
+      "overall": "LOW",
+      "annex22": "Non-critical",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "llama": {
+      "overall": "LOW",
+      "annex22": "Non-critical",
+      "llm_stop": false,
+      "dynamic_stop": false
+    }
+  },
+  {
+    "id": "S41",
+    "golden": {
+      "overall": "MEDIUM",
+      "annex22": "Significant",
+      "stop_llm": false,
+      "stop_dynamic": false,
+      "stop_agentic": false,
+      "label_source": "rule-derived"
+    },
+    "engine": {
+      "overall": "MEDIUM",
+      "annex22": "Significant",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "claude": {
+      "overall": "MEDIUM",
+      "annex22": "Significant",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "llama": {
+      "overall": "MEDIUM",
+      "annex22": "Significant",
+      "llm_stop": false,
+      "dynamic_stop": false
+    }
+  },
+  {
+    "id": "S42",
+    "golden": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "stop_llm": true,
+      "stop_dynamic": false,
+      "stop_agentic": false,
+      "label_source": "rule-derived"
+    },
+    "engine": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": true,
+      "dynamic_stop": false
+    },
+    "claude": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": true,
+      "dynamic_stop": false
+    },
+    "llama": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": true,
+      "dynamic_stop": false
+    }
+  },
+  {
+    "id": "S43",
+    "golden": {
+      "overall": "LOW",
+      "annex22": "Non-critical",
+      "stop_llm": false,
+      "stop_dynamic": false,
+      "stop_agentic": false,
+      "label_source": "rule-derived"
+    },
+    "engine": {
+      "overall": "LOW",
+      "annex22": "Non-critical",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "claude": {
+      "overall": "LOW",
+      "annex22": "Non-critical",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "llama": {
+      "overall": "LOW",
+      "annex22": "Non-critical",
+      "llm_stop": false,
+      "dynamic_stop": false
+    }
+  },
+  {
+    "id": "S44",
+    "golden": {
+      "overall": "MEDIUM",
+      "annex22": "Significant",
+      "stop_llm": true,
+      "stop_dynamic": false,
+      "stop_agentic": false,
+      "label_source": "rule-derived"
+    },
+    "engine": {
+      "overall": "MEDIUM",
+      "annex22": "Significant",
+      "llm_stop": true,
+      "dynamic_stop": false
+    },
+    "claude": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": true,
+      "dynamic_stop": false
+    },
+    "llama": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": true,
+      "dynamic_stop": false
+    }
+  },
+  {
+    "id": "S45",
+    "golden": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "stop_llm": false,
+      "stop_dynamic": true,
+      "stop_agentic": false,
+      "label_source": "rule-derived"
+    },
+    "engine": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": false,
+      "dynamic_stop": true
+    },
+    "claude": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": false,
+      "dynamic_stop": true
+    },
+    "llama": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": false,
+      "dynamic_stop": true
+    }
+  },
+  {
+    "id": "S46",
+    "golden": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "stop_llm": true,
+      "stop_dynamic": false,
+      "stop_agentic": true,
+      "label_source": "rule-derived"
+    },
+    "engine": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": true,
+      "dynamic_stop": false
+    },
+    "claude": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": true,
+      "dynamic_stop": false
+    },
+    "llama": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": true,
+      "dynamic_stop": false
+    }
+  },
+  {
+    "id": "S47",
+    "golden": {
+      "overall": "MEDIUM",
+      "annex22": "Significant",
+      "stop_llm": true,
+      "stop_dynamic": false,
+      "stop_agentic": false,
+      "label_source": "rule-derived"
+    },
+    "engine": {
+      "overall": "MEDIUM",
+      "annex22": "Significant",
+      "llm_stop": true,
+      "dynamic_stop": false
+    },
+    "claude": {
+      "overall": "MEDIUM",
+      "annex22": "Significant",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "llama": {
+      "overall": "MEDIUM",
+      "annex22": "Significant",
+      "llm_stop": false,
+      "dynamic_stop": false
+    }
+  },
+  {
+    "id": "S48",
+    "golden": {
+      "overall": "MEDIUM",
+      "annex22": "Significant",
+      "stop_llm": false,
+      "stop_dynamic": true,
+      "stop_agentic": false,
+      "label_source": "rule-derived"
+    },
+    "engine": {
+      "overall": "MEDIUM",
+      "annex22": "Significant",
+      "llm_stop": false,
+      "dynamic_stop": true
+    },
+    "claude": {
+      "overall": "LOW",
+      "annex22": "Non-critical",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "llama": {
+      "overall": "MEDIUM",
+      "annex22": "Significant",
+      "llm_stop": false,
+      "dynamic_stop": false
+    }
+  },
+  {
+    "id": "S49",
+    "golden": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "stop_llm": true,
+      "stop_dynamic": false,
+      "stop_agentic": false,
+      "label_source": "rule-derived"
+    },
+    "engine": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": true,
+      "dynamic_stop": false
+    },
+    "claude": {
+      "overall": "HIGH",
+      "annex22": "Significant",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "llama": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": true,
+      "dynamic_stop": false
+    }
+  },
+  {
+    "id": "S50",
+    "golden": {
+      "overall": "LOW",
+      "annex22": "Non-critical",
+      "stop_llm": false,
+      "stop_dynamic": false,
+      "stop_agentic": false,
+      "label_source": "rule-derived"
+    },
+    "engine": {
+      "overall": "LOW",
+      "annex22": "Non-critical",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "claude": {
+      "overall": "LOW",
+      "annex22": "Non-critical",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "llama": {
+      "overall": "LOW",
+      "annex22": "Non-critical",
+      "llm_stop": false,
+      "dynamic_stop": false
     }
   }
 ]

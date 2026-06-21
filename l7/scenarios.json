@@ -315,36 +315,1029 @@
   "id": "S13",
   "desc": "An agentic AI tool auto-generates and executes computer-system-validation (CSV) protocols; it uses tools to pull system information and writes results into the validation record; a validation lead reviews and approves. Configured LLM, agentic, locked. Data: GxP records.",
   "answers": {
-   "functions": ["Quality / QMS (deviation, CAPA)"],
-   "impact": true, "enters_records": true, "autonomy": "advisory",
-   "model_type": "llm", "build": "configured", "adaptive": "locked",
-   "data_sensitivity": "gxp_records", "connections": ["QMS"], "governance": "developing",
+   "functions": [
+    "Quality / QMS (deviation, CAPA)"
+   ],
+   "impact": true,
+   "enters_records": true,
+   "autonomy": "advisory",
+   "model_type": "llm",
+   "build": "configured",
+   "adaptive": "locked",
+   "data_sensitivity": "gxp_records",
+   "connections": [
+    "QMS"
+   ],
+   "governance": "developing",
    "agentic": "yes"
   },
-  "golden": {"overall": "HIGH", "annex22": "Critical", "stop_llm": true, "stop_dynamic": false, "stop_agentic": false}
+  "golden": {
+   "overall": "HIGH",
+   "annex22": "Critical",
+   "stop_llm": true,
+   "stop_dynamic": false,
+   "stop_agentic": false
+  }
  },
  {
   "id": "S14",
   "desc": "An agentic LLM continuously scans public FDA enforcement actions, warning letters, and guidance to flag supplier risk and inspection-readiness gaps; advisory; outputs inform quality decisions but are not auto-entered into GxP records. Data: public/external.",
   "answers": {
-   "functions": ["Quality / QMS (deviation, CAPA)"],
-   "impact": false, "enters_records": false, "autonomy": "advisory",
-   "model_type": "llm", "build": "cots", "adaptive": "locked",
-   "data_sensitivity": "public", "connections": ["External API / model provider"], "governance": "developing",
+   "functions": [
+    "Quality / QMS (deviation, CAPA)"
+   ],
+   "impact": false,
+   "enters_records": false,
+   "autonomy": "advisory",
+   "model_type": "llm",
+   "build": "cots",
+   "adaptive": "locked",
+   "data_sensitivity": "public",
+   "connections": [
+    "External API / model provider"
+   ],
+   "governance": "developing",
    "agentic": "yes"
   },
-  "golden": {"overall": "LOW", "annex22": "Non-critical", "stop_llm": false, "stop_dynamic": false, "stop_agentic": false}
+  "golden": {
+   "overall": "LOW",
+   "annex22": "Non-critical",
+   "stop_llm": false,
+   "stop_dynamic": false,
+   "stop_agentic": false
+  }
  },
  {
   "id": "S15",
   "desc": "A custom, continuously-learning agentic AI autonomously adjusts critical process parameters on the live manufacturing line in real time, using tools to act on the MES without per-action human review ('self-healing'). Data: GxP records.",
   "answers": {
-   "functions": ["Manufacturing / MES"],
-   "impact": true, "enters_records": true, "autonomy": "automated",
-   "model_type": "ml", "build": "custom", "adaptive": "learning",
-   "data_sensitivity": "gxp_records", "connections": ["MES"], "governance": "developing",
+   "functions": [
+    "Manufacturing / MES"
+   ],
+   "impact": true,
+   "enters_records": true,
+   "autonomy": "automated",
+   "model_type": "ml",
+   "build": "custom",
+   "adaptive": "learning",
+   "data_sensitivity": "gxp_records",
+   "connections": [
+    "MES"
+   ],
+   "governance": "developing",
    "agentic": "yes"
   },
-  "golden": {"overall": "HIGH", "annex22": "Critical", "stop_llm": false, "stop_dynamic": true, "stop_agentic": true}
+  "golden": {
+   "overall": "HIGH",
+   "annex22": "Critical",
+   "stop_llm": false,
+   "stop_dynamic": true,
+   "stop_agentic": true
+  }
+ },
+ {
+  "id": "S16",
+  "desc": "Soft-sensor predicts product potency in continuous manufacturing; advisory to operators. Build: custom predictive; data: gxp_records.",
+  "answers": {
+   "functions": [
+    "Manufacturing / MES"
+   ],
+   "impact": true,
+   "enters_records": false,
+   "autonomy": "advisory",
+   "model_type": "predictive",
+   "build": "custom",
+   "adaptive": "locked",
+   "data_sensitivity": "gxp_records",
+   "connections": [],
+   "governance": "established",
+   "agentic": "no"
+  },
+  "golden": {
+   "overall": "MEDIUM",
+   "annex22": "Significant",
+   "stop_llm": false,
+   "stop_dynamic": false,
+   "stop_agentic": false,
+   "label_source": "rule-derived"
+  }
+ },
+ {
+  "id": "S17",
+  "desc": "Multivariate statistical process control flags batch excursions; human reviews. Build: configured ml; data: gxp_records.",
+  "answers": {
+   "functions": [
+    "QC / LIMS"
+   ],
+   "impact": true,
+   "enters_records": true,
+   "autonomy": "decision_support",
+   "model_type": "ml",
+   "build": "configured",
+   "adaptive": "locked",
+   "data_sensitivity": "gxp_records",
+   "connections": [],
+   "governance": "developing",
+   "agentic": "no"
+  },
+  "golden": {
+   "overall": "HIGH",
+   "annex22": "Critical",
+   "stop_llm": false,
+   "stop_dynamic": false,
+   "stop_agentic": false,
+   "label_source": "rule-derived"
+  }
+ },
+ {
+  "id": "S18",
+  "desc": "Advanced process control autonomously adjusts a non-critical utility loop. Build: custom ml; data: internal.",
+  "answers": {
+   "functions": [
+    "Manufacturing / MES"
+   ],
+   "impact": false,
+   "enters_records": false,
+   "autonomy": "automated",
+   "model_type": "ml",
+   "build": "custom",
+   "adaptive": "learning",
+   "data_sensitivity": "internal",
+   "connections": [],
+   "governance": "established",
+   "agentic": "no"
+  },
+  "golden": {
+   "overall": "LOW",
+   "annex22": "Non-critical",
+   "stop_llm": false,
+   "stop_dynamic": false,
+   "stop_agentic": false,
+   "label_source": "rule-derived"
+  }
+ },
+ {
+  "id": "S19",
+  "desc": "LLM converts master batch records into electronic batch records; QA approves. Build: configured llm; data: gxp_records.",
+  "answers": {
+   "functions": [
+    "Manufacturing / MES"
+   ],
+   "impact": true,
+   "enters_records": true,
+   "autonomy": "advisory",
+   "model_type": "llm",
+   "build": "configured",
+   "adaptive": "locked",
+   "data_sensitivity": "gxp_records",
+   "connections": [],
+   "governance": "developing",
+   "agentic": "no"
+  },
+  "golden": {
+   "overall": "HIGH",
+   "annex22": "Critical",
+   "stop_llm": true,
+   "stop_dynamic": false,
+   "stop_agentic": false,
+   "label_source": "rule-derived"
+  }
+ },
+ {
+  "id": "S20",
+  "desc": "Agentic assistant drafts a deviation investigation and pulls prior cases via tools. Build: cots llm (agentic/tool-using); data: internal.",
+  "answers": {
+   "functions": [
+    "Quality / QMS (deviation, CAPA)"
+   ],
+   "impact": true,
+   "enters_records": false,
+   "autonomy": "advisory",
+   "model_type": "llm",
+   "build": "cots",
+   "adaptive": "locked",
+   "data_sensitivity": "internal",
+   "connections": [],
+   "governance": "developing",
+   "agentic": "yes"
+  },
+  "golden": {
+   "overall": "MEDIUM",
+   "annex22": "Significant",
+   "stop_llm": true,
+   "stop_dynamic": false,
+   "stop_agentic": false,
+   "label_source": "rule-derived"
+  }
+ },
+ {
+  "id": "S21",
+  "desc": "Pharmacovigilance signal-detection ML over adverse-event data; advisory. Build: configured ml; data: personal_phi.",
+  "answers": {
+   "functions": [
+    "Pharmacovigilance"
+   ],
+   "impact": true,
+   "enters_records": false,
+   "autonomy": "decision_support",
+   "model_type": "ml",
+   "build": "configured",
+   "adaptive": "learning",
+   "data_sensitivity": "personal_phi",
+   "connections": [],
+   "governance": "established",
+   "agentic": "no"
+  },
+  "golden": {
+   "overall": "MEDIUM",
+   "annex22": "Significant",
+   "stop_llm": false,
+   "stop_dynamic": true,
+   "stop_agentic": false,
+   "label_source": "rule-derived"
+  }
+ },
+ {
+  "id": "S22",
+  "desc": "LLM auto-codes ICSR adverse events into the safety database automatically. Build: finetuned llm; data: personal_phi.",
+  "answers": {
+   "functions": [
+    "Pharmacovigilance"
+   ],
+   "impact": true,
+   "enters_records": true,
+   "autonomy": "automated",
+   "model_type": "llm",
+   "build": "finetuned",
+   "adaptive": "locked",
+   "data_sensitivity": "personal_phi",
+   "connections": [],
+   "governance": "developing",
+   "agentic": "no"
+  },
+  "golden": {
+   "overall": "HIGH",
+   "annex22": "Critical",
+   "stop_llm": true,
+   "stop_dynamic": false,
+   "stop_agentic": false,
+   "label_source": "rule-derived"
+  }
+ },
+ {
+  "id": "S23",
+  "desc": "Vision model detects particulates in vials; flags for human inspector. Build: custom ml; data: gxp_records.",
+  "answers": {
+   "functions": [
+    "Manufacturing / MES"
+   ],
+   "impact": true,
+   "enters_records": true,
+   "autonomy": "decision_support",
+   "model_type": "ml",
+   "build": "custom",
+   "adaptive": "locked",
+   "data_sensitivity": "gxp_records",
+   "connections": [],
+   "governance": "established",
+   "agentic": "no"
+  },
+  "golden": {
+   "overall": "HIGH",
+   "annex22": "Critical",
+   "stop_llm": false,
+   "stop_dynamic": false,
+   "stop_agentic": false,
+   "label_source": "rule-derived"
+  }
+ },
+ {
+  "id": "S24",
+  "desc": "Agentic vision system auto-rejects vials and updates MES with no human review. Build: custom ml (agentic/tool-using); data: gxp_records.",
+  "answers": {
+   "functions": [
+    "Manufacturing / MES"
+   ],
+   "impact": true,
+   "enters_records": true,
+   "autonomy": "automated",
+   "model_type": "ml",
+   "build": "custom",
+   "adaptive": "learning",
+   "data_sensitivity": "gxp_records",
+   "connections": [],
+   "governance": "developing",
+   "agentic": "yes"
+  },
+  "golden": {
+   "overall": "HIGH",
+   "annex22": "Critical",
+   "stop_llm": false,
+   "stop_dynamic": true,
+   "stop_agentic": true,
+   "label_source": "rule-derived"
+  }
+ },
+ {
+  "id": "S25",
+  "desc": "LLM chatbot answers GMP training questions for operators; advisory. Build: cots llm; data: internal.",
+  "answers": {
+   "functions": [
+    "Other"
+   ],
+   "impact": false,
+   "enters_records": false,
+   "autonomy": "advisory",
+   "model_type": "llm",
+   "build": "cots",
+   "adaptive": "locked",
+   "data_sensitivity": "internal",
+   "connections": [],
+   "governance": "initial",
+   "agentic": "no"
+  },
+  "golden": {
+   "overall": "LOW",
+   "annex22": "Non-critical",
+   "stop_llm": false,
+   "stop_dynamic": false,
+   "stop_agentic": false,
+   "label_source": "rule-derived"
+  }
+ },
+ {
+  "id": "S26",
+  "desc": "OCR+LLM extracts CoA values from supplier PDFs into LIMS automatically. Build: configured llm; data: gxp_records.",
+  "answers": {
+   "functions": [
+    "QC / LIMS"
+   ],
+   "impact": true,
+   "enters_records": true,
+   "autonomy": "automated",
+   "model_type": "llm",
+   "build": "configured",
+   "adaptive": "locked",
+   "data_sensitivity": "gxp_records",
+   "connections": [],
+   "governance": "developing",
+   "agentic": "no"
+  },
+  "golden": {
+   "overall": "HIGH",
+   "annex22": "Critical",
+   "stop_llm": true,
+   "stop_dynamic": false,
+   "stop_agentic": false,
+   "label_source": "rule-derived"
+  }
+ },
+ {
+  "id": "S27",
+  "desc": "LLM drafts SOP revisions for author review; not entered until approved. Build: cots llm; data: internal.",
+  "answers": {
+   "functions": [
+    "Quality / QMS (deviation, CAPA)"
+   ],
+   "impact": true,
+   "enters_records": false,
+   "autonomy": "advisory",
+   "model_type": "llm",
+   "build": "cots",
+   "adaptive": "locked",
+   "data_sensitivity": "internal",
+   "connections": [],
+   "governance": "developing",
+   "agentic": "no"
+  },
+  "golden": {
+   "overall": "MEDIUM",
+   "annex22": "Significant",
+   "stop_llm": true,
+   "stop_dynamic": false,
+   "stop_agentic": false,
+   "label_source": "rule-derived"
+  }
+ },
+ {
+  "id": "S28",
+  "desc": "Agentic tool monitors public FDA enforcement to score supplier risk; advisory. Build: cots llm (agentic/tool-using); data: public.",
+  "answers": {
+   "functions": [
+    "Supply chain"
+   ],
+   "impact": false,
+   "enters_records": false,
+   "autonomy": "advisory",
+   "model_type": "llm",
+   "build": "cots",
+   "adaptive": "learning",
+   "data_sensitivity": "public",
+   "connections": [],
+   "governance": "developing",
+   "agentic": "yes"
+  },
+  "golden": {
+   "overall": "LOW",
+   "annex22": "Non-critical",
+   "stop_llm": false,
+   "stop_dynamic": false,
+   "stop_agentic": false,
+   "label_source": "rule-derived"
+  }
+ },
+ {
+  "id": "S29",
+  "desc": "Predictive maintenance ML on GMP autoclaves writes work orders to the CMMS. Build: cots predictive; data: gxp_records.",
+  "answers": {
+   "functions": [
+    "Manufacturing / MES"
+   ],
+   "impact": true,
+   "enters_records": true,
+   "autonomy": "automated",
+   "model_type": "predictive",
+   "build": "cots",
+   "adaptive": "learning",
+   "data_sensitivity": "gxp_records",
+   "connections": [],
+   "governance": "established",
+   "agentic": "no"
+  },
+  "golden": {
+   "overall": "HIGH",
+   "annex22": "Critical",
+   "stop_llm": false,
+   "stop_dynamic": true,
+   "stop_agentic": false,
+   "label_source": "rule-derived"
+  }
+ },
+ {
+  "id": "S30",
+  "desc": "LLM summarizes stability data into a report section; statistician reviews. Build: configured llm; data: gxp_records.",
+  "answers": {
+   "functions": [
+    "Regulatory authoring"
+   ],
+   "impact": true,
+   "enters_records": false,
+   "autonomy": "advisory",
+   "model_type": "llm",
+   "build": "configured",
+   "adaptive": "locked",
+   "data_sensitivity": "gxp_records",
+   "connections": [],
+   "governance": "developing",
+   "agentic": "no"
+  },
+  "golden": {
+   "overall": "MEDIUM",
+   "annex22": "Significant",
+   "stop_llm": true,
+   "stop_dynamic": false,
+   "stop_agentic": false,
+   "label_source": "rule-derived"
+  }
+ },
+ {
+  "id": "S31",
+  "desc": "Generative model designs DoE experiments for process development; advisory. Build: finetuned llm; data: internal.",
+  "answers": {
+   "functions": [
+    "Other"
+   ],
+   "impact": false,
+   "enters_records": false,
+   "autonomy": "advisory",
+   "model_type": "llm",
+   "build": "finetuned",
+   "adaptive": "locked",
+   "data_sensitivity": "internal",
+   "connections": [],
+   "governance": "developing",
+   "agentic": "no"
+  },
+  "golden": {
+   "overall": "LOW",
+   "annex22": "Non-critical",
+   "stop_llm": false,
+   "stop_dynamic": false,
+   "stop_agentic": false,
+   "label_source": "rule-derived"
+  }
+ },
+ {
+  "id": "S32",
+  "desc": "Agentic LLM orchestrates sub-agents to assemble an IND module, auto-submits draft. Build: finetuned llm (agentic/tool-using); data: gxp_records.",
+  "answers": {
+   "functions": [
+    "Regulatory authoring"
+   ],
+   "impact": true,
+   "enters_records": true,
+   "autonomy": "automated",
+   "model_type": "llm",
+   "build": "finetuned",
+   "adaptive": "learning",
+   "data_sensitivity": "gxp_records",
+   "connections": [],
+   "governance": "initial",
+   "agentic": "yes"
+  },
+  "golden": {
+   "overall": "HIGH",
+   "annex22": "Critical",
+   "stop_llm": true,
+   "stop_dynamic": true,
+   "stop_agentic": true,
+   "label_source": "rule-derived"
+  }
+ },
+ {
+  "id": "S33",
+  "desc": "ML classifies environmental-monitoring excursions; microbiologist approves. Build: configured ml; data: gxp_records.",
+  "answers": {
+   "functions": [
+    "QC / LIMS"
+   ],
+   "impact": true,
+   "enters_records": true,
+   "autonomy": "decision_support",
+   "model_type": "ml",
+   "build": "configured",
+   "adaptive": "locked",
+   "data_sensitivity": "gxp_records",
+   "connections": [],
+   "governance": "established",
+   "agentic": "no"
+  },
+  "golden": {
+   "overall": "HIGH",
+   "annex22": "Critical",
+   "stop_llm": false,
+   "stop_dynamic": false,
+   "stop_agentic": false,
+   "label_source": "rule-derived"
+  }
+ },
+ {
+  "id": "S34",
+  "desc": "LLM triages complaints and proposes severity; auto-files into complaint system. Build: cots llm; data: gxp_records.",
+  "answers": {
+   "functions": [
+    "Quality / QMS (deviation, CAPA)"
+   ],
+   "impact": true,
+   "enters_records": true,
+   "autonomy": "automated",
+   "model_type": "llm",
+   "build": "cots",
+   "adaptive": "locked",
+   "data_sensitivity": "gxp_records",
+   "connections": [],
+   "governance": "developing",
+   "agentic": "no"
+  },
+  "golden": {
+   "overall": "HIGH",
+   "annex22": "Critical",
+   "stop_llm": true,
+   "stop_dynamic": false,
+   "stop_agentic": false,
+   "label_source": "rule-derived"
+  }
+ },
+ {
+  "id": "S35",
+  "desc": "Demand-forecasting ML for commercial planning; no GxP impact. Build: cots predictive; data: public.",
+  "answers": {
+   "functions": [
+    "Supply chain"
+   ],
+   "impact": false,
+   "enters_records": false,
+   "autonomy": "advisory",
+   "model_type": "predictive",
+   "build": "cots",
+   "adaptive": "learning",
+   "data_sensitivity": "public",
+   "connections": [],
+   "governance": "advanced",
+   "agentic": "no"
+  },
+  "golden": {
+   "overall": "LOW",
+   "annex22": "Non-critical",
+   "stop_llm": false,
+   "stop_dynamic": false,
+   "stop_agentic": false,
+   "label_source": "rule-derived"
+  }
+ },
+ {
+  "id": "S36",
+  "desc": "Agentic CSV tool generates and executes IQ/OQ protocols into the validation record. Build: finetuned llm (agentic/tool-using); data: gxp_records.",
+  "answers": {
+   "functions": [
+    "Quality / QMS (deviation, CAPA)"
+   ],
+   "impact": true,
+   "enters_records": true,
+   "autonomy": "advisory",
+   "model_type": "llm",
+   "build": "finetuned",
+   "adaptive": "locked",
+   "data_sensitivity": "gxp_records",
+   "connections": [],
+   "governance": "developing",
+   "agentic": "yes"
+  },
+  "golden": {
+   "overall": "HIGH",
+   "annex22": "Critical",
+   "stop_llm": true,
+   "stop_dynamic": false,
+   "stop_agentic": false,
+   "label_source": "rule-derived"
+  }
+ },
+ {
+  "id": "S37",
+  "desc": "LLM cleaning-validation calculator; QA verifies every result. Build: configured llm; data: gxp_records.",
+  "answers": {
+   "functions": [
+    "QC / LIMS"
+   ],
+   "impact": true,
+   "enters_records": true,
+   "autonomy": "decision_support",
+   "model_type": "llm",
+   "build": "configured",
+   "adaptive": "locked",
+   "data_sensitivity": "gxp_records",
+   "connections": [],
+   "governance": "developing",
+   "agentic": "no"
+  },
+  "golden": {
+   "overall": "HIGH",
+   "annex22": "Critical",
+   "stop_llm": true,
+   "stop_dynamic": false,
+   "stop_agentic": false,
+   "label_source": "rule-derived"
+  }
+ },
+ {
+  "id": "S38",
+  "desc": "Continuously-learning model optimizes lyophilization cycle in real time, acts on PLC. Build: custom ml (agentic/tool-using); data: gxp_records.",
+  "answers": {
+   "functions": [
+    "Manufacturing / MES"
+   ],
+   "impact": true,
+   "enters_records": true,
+   "autonomy": "automated",
+   "model_type": "ml",
+   "build": "custom",
+   "adaptive": "learning",
+   "data_sensitivity": "gxp_records",
+   "connections": [],
+   "governance": "developing",
+   "agentic": "yes"
+  },
+  "golden": {
+   "overall": "HIGH",
+   "annex22": "Critical",
+   "stop_llm": false,
+   "stop_dynamic": true,
+   "stop_agentic": true,
+   "label_source": "rule-derived"
+  }
+ },
+ {
+  "id": "S39",
+  "desc": "LLM drafts annual product review narrative; QA reviews before use. Build: configured llm; data: gxp_records.",
+  "answers": {
+   "functions": [
+    "Quality / QMS (deviation, CAPA)"
+   ],
+   "impact": true,
+   "enters_records": false,
+   "autonomy": "advisory",
+   "model_type": "llm",
+   "build": "configured",
+   "adaptive": "locked",
+   "data_sensitivity": "gxp_records",
+   "connections": [],
+   "governance": "established",
+   "agentic": "no"
+  },
+  "golden": {
+   "overall": "MEDIUM",
+   "annex22": "Significant",
+   "stop_llm": true,
+   "stop_dynamic": false,
+   "stop_agentic": false,
+   "label_source": "rule-derived"
+  }
+ },
+ {
+  "id": "S40",
+  "desc": "Knowledge assistant over public guidance documents; advisory, no records. Build: cots llm; data: public.",
+  "answers": {
+   "functions": [
+    "Regulatory authoring"
+   ],
+   "impact": false,
+   "enters_records": false,
+   "autonomy": "advisory",
+   "model_type": "llm",
+   "build": "cots",
+   "adaptive": "locked",
+   "data_sensitivity": "public",
+   "connections": [],
+   "governance": "initial",
+   "agentic": "no"
+  },
+  "golden": {
+   "overall": "LOW",
+   "annex22": "Non-critical",
+   "stop_llm": false,
+   "stop_dynamic": false,
+   "stop_agentic": false,
+   "label_source": "rule-derived"
+  }
+ },
+ {
+  "id": "S41",
+  "desc": "ML predicts dissolution from process params; advisory to formulators. Build: finetuned ml; data: internal.",
+  "answers": {
+   "functions": [
+    "Other"
+   ],
+   "impact": true,
+   "enters_records": false,
+   "autonomy": "advisory",
+   "model_type": "ml",
+   "build": "finetuned",
+   "adaptive": "locked",
+   "data_sensitivity": "internal",
+   "connections": [],
+   "governance": "developing",
+   "agentic": "no"
+  },
+  "golden": {
+   "overall": "MEDIUM",
+   "annex22": "Significant",
+   "stop_llm": false,
+   "stop_dynamic": false,
+   "stop_agentic": false,
+   "label_source": "rule-derived"
+  }
+ },
+ {
+  "id": "S42",
+  "desc": "Agentic batch-release assistant checks the record and recommends disposition; QP signs. Build: finetuned llm (agentic/tool-using); data: gxp_records.",
+  "answers": {
+   "functions": [
+    "Quality / QMS (deviation, CAPA)"
+   ],
+   "impact": true,
+   "enters_records": true,
+   "autonomy": "advisory",
+   "model_type": "llm",
+   "build": "finetuned",
+   "adaptive": "locked",
+   "data_sensitivity": "gxp_records",
+   "connections": [],
+   "governance": "developing",
+   "agentic": "yes"
+  },
+  "golden": {
+   "overall": "HIGH",
+   "annex22": "Critical",
+   "stop_llm": true,
+   "stop_dynamic": false,
+   "stop_agentic": false,
+   "label_source": "rule-derived"
+  }
+ },
+ {
+  "id": "S43",
+  "desc": "Generative tool writes marketing copy (non-GxP). Build: cots llm; data: public.",
+  "answers": {
+   "functions": [
+    "Other"
+   ],
+   "impact": false,
+   "enters_records": false,
+   "autonomy": "advisory",
+   "model_type": "llm",
+   "build": "cots",
+   "adaptive": "locked",
+   "data_sensitivity": "public",
+   "connections": [],
+   "governance": "initial",
+   "agentic": "no"
+  },
+  "golden": {
+   "overall": "LOW",
+   "annex22": "Non-critical",
+   "stop_llm": false,
+   "stop_dynamic": false,
+   "stop_agentic": false,
+   "label_source": "rule-derived"
+  }
+ },
+ {
+  "id": "S44",
+  "desc": "LLM extracts and reconciles values across an executed batch record; QA reviews flags. Build: configured llm; data: gxp_records.",
+  "answers": {
+   "functions": [
+    "Quality / QMS (deviation, CAPA)"
+   ],
+   "impact": true,
+   "enters_records": false,
+   "autonomy": "decision_support",
+   "model_type": "llm",
+   "build": "configured",
+   "adaptive": "locked",
+   "data_sensitivity": "gxp_records",
+   "connections": [],
+   "governance": "developing",
+   "agentic": "no"
+  },
+  "golden": {
+   "overall": "MEDIUM",
+   "annex22": "Significant",
+   "stop_llm": true,
+   "stop_dynamic": false,
+   "stop_agentic": false,
+   "label_source": "rule-derived"
+  }
+ },
+ {
+  "id": "S45",
+  "desc": "Adaptive APC adjusts critical process parameters with operator confirmation each change. Build: custom ml; data: gxp_records.",
+  "answers": {
+   "functions": [
+    "Manufacturing / MES"
+   ],
+   "impact": true,
+   "enters_records": true,
+   "autonomy": "decision_support",
+   "model_type": "ml",
+   "build": "custom",
+   "adaptive": "learning",
+   "data_sensitivity": "gxp_records",
+   "connections": [],
+   "governance": "developing",
+   "agentic": "no"
+  },
+  "golden": {
+   "overall": "HIGH",
+   "annex22": "Critical",
+   "stop_llm": false,
+   "stop_dynamic": true,
+   "stop_agentic": false,
+   "label_source": "rule-derived"
+  }
+ },
+ {
+  "id": "S46",
+  "desc": "Agentic data-integrity auditor scans audit trails and opens deviations automatically. Build: configured llm (agentic/tool-using); data: gxp_records.",
+  "answers": {
+   "functions": [
+    "Quality / QMS (deviation, CAPA)"
+   ],
+   "impact": true,
+   "enters_records": true,
+   "autonomy": "automated",
+   "model_type": "llm",
+   "build": "configured",
+   "adaptive": "locked",
+   "data_sensitivity": "gxp_records",
+   "connections": [],
+   "governance": "developing",
+   "agentic": "yes"
+  },
+  "golden": {
+   "overall": "HIGH",
+   "annex22": "Critical",
+   "stop_llm": true,
+   "stop_dynamic": false,
+   "stop_agentic": true,
+   "label_source": "rule-derived"
+  }
+ },
+ {
+  "id": "S47",
+  "desc": "LLM translates a regulatory dossier between languages; human verifies. Build: cots llm; data: gxp_records.",
+  "answers": {
+   "functions": [
+    "Regulatory authoring"
+   ],
+   "impact": true,
+   "enters_records": false,
+   "autonomy": "advisory",
+   "model_type": "llm",
+   "build": "cots",
+   "adaptive": "locked",
+   "data_sensitivity": "gxp_records",
+   "connections": [],
+   "governance": "established",
+   "agentic": "no"
+  },
+  "golden": {
+   "overall": "MEDIUM",
+   "annex22": "Significant",
+   "stop_llm": true,
+   "stop_dynamic": false,
+   "stop_agentic": false,
+   "label_source": "rule-derived"
+  }
+ },
+ {
+  "id": "S48",
+  "desc": "ML supplier-risk scoring from internal quality history; advisory. Build: configured ml; data: internal.",
+  "answers": {
+   "functions": [
+    "Supply chain"
+   ],
+   "impact": true,
+   "enters_records": false,
+   "autonomy": "advisory",
+   "model_type": "ml",
+   "build": "configured",
+   "adaptive": "learning",
+   "data_sensitivity": "internal",
+   "connections": [],
+   "governance": "developing",
+   "agentic": "no"
+  },
+  "golden": {
+   "overall": "MEDIUM",
+   "annex22": "Significant",
+   "stop_llm": false,
+   "stop_dynamic": true,
+   "stop_agentic": false,
+   "label_source": "rule-derived"
+  }
+ },
+ {
+  "id": "S49",
+  "desc": "Locked LLM drafts CAPA effectiveness checks; QA approves and records. Build: configured llm; data: gxp_records.",
+  "answers": {
+   "functions": [
+    "Quality / QMS (deviation, CAPA)"
+   ],
+   "impact": true,
+   "enters_records": true,
+   "autonomy": "advisory",
+   "model_type": "llm",
+   "build": "configured",
+   "adaptive": "locked",
+   "data_sensitivity": "gxp_records",
+   "connections": [],
+   "governance": "established",
+   "agentic": "no"
+  },
+  "golden": {
+   "overall": "HIGH",
+   "annex22": "Critical",
+   "stop_llm": true,
+   "stop_dynamic": false,
+   "stop_agentic": false,
+   "label_source": "rule-derived"
+  }
+ },
+ {
+  "id": "S50",
+  "desc": "Research literature-mining agent for discovery scientists; non-GxP. Build: cots llm (agentic/tool-using); data: public.",
+  "answers": {
+   "functions": [
+    "Other"
+   ],
+   "impact": false,
+   "enters_records": false,
+   "autonomy": "advisory",
+   "model_type": "llm",
+   "build": "cots",
+   "adaptive": "learning",
+   "data_sensitivity": "public",
+   "connections": [],
+   "governance": "initial",
+   "agentic": "yes"
+  },
+  "golden": {
+   "overall": "LOW",
+   "annex22": "Non-critical",
+   "stop_llm": false,
+   "stop_dynamic": false,
+   "stop_agentic": false,
+   "label_source": "rule-derived"
+  }
  }
 ]

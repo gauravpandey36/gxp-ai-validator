@@ -1,0 +1,16 @@
+variant_id,source_id,degradation,color,format,approx_char_delta,n_golden_fields
+BR1_clean,BR1,clean,white,structured,0,6
+BR1_ocr_light,BR1,ocr_light,white,scanned,1,6
+BR1_ocr_heavy,BR1,ocr_heavy,yellow,scanned,4,6
+BR1_layout_drift,BR1,layout_drift,white,reflowed,180,6
+BR1_ocr_heavy_drift,BR1,ocr_heavy_drift,green,scanned+reflowed,181,6
+BR2_clean,BR2,clean,white,structured,0,5
+BR2_ocr_light,BR2,ocr_light,white,scanned,2,5
+BR2_ocr_heavy,BR2,ocr_heavy,yellow,scanned,3,5
+BR2_layout_drift,BR2,layout_drift,white,reflowed,127,5
+BR2_ocr_heavy_drift,BR2,ocr_heavy_drift,green,scanned+reflowed,128,5
+BR3_clean,BR3,clean,white,structured,0,5
+BR3_ocr_light,BR3,ocr_light,white,scanned,2,5
+BR3_ocr_heavy,BR3,ocr_heavy,yellow,scanned,4,5
+BR3_layout_drift,BR3,layout_drift,white,reflowed,126,5
+BR3_ocr_heavy_drift,BR3,ocr_heavy_drift,green,scanned+reflowed,129,5

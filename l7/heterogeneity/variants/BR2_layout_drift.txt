@@ -1,0 +1,1 @@
+Batch No: GC301-DS-0017  Step: Low-pH viral inactivation  Target pH: 3.6  Recorded pH: 3.58  Hold time: 60 min  Temp: 19 C  Protein A pool titer: 4.2 g/L  Reviewed by: M.C.  Date: 02-Feb-2026

@@ -1,0 +1,33 @@
+{
+ "_about": "Synthetic deviation/CAPA records with SEEDED adequacy defects + golden labels, for benchmarking AI deviation/CAPA-investigation agents. Grounded in FDA 483 patterns: inadequate root-cause analysis is the #1 cited CAPA deficiency; 'operator error' is not a root cause; effectiveness checks and deviation->CAPA linkage are frequent gaps. Synthetic/educational; no proprietary data.",
+ "label_keys": {"rca_adequate": "root cause goes beyond shallow/operator-error to a systemic why",
+                "capa_adequate": "CAPA addresses the true cause and is preventive, not just corrective",
+                "effectiveness_check": "a defined effectiveness check exists",
+                "linkage": "deviation explicitly linked to its CAPA(s)"},
+ "records": [
+  {"id":"D01","deviation":"Wrong excipient lot dispensed to compounding.","rca":"Operator picked the wrong lot (operator error).","capa":"Retrain the operator.","effectiveness_check":"None stated.",
+   "golden":{"rca_adequate":false,"capa_adequate":false,"effectiveness_check":false,"linkage":true,"primary_defect":"shallow RCA (operator error); CAPA = retrain only"}},
+  {"id":"D02","deviation":"Lyophilizer shelf-temperature excursion to -18C for 12 min.","rca":"PID loop tuning drift after maintenance; no post-maintenance verification step in the SOP.","capa":"Add post-maintenance control-loop verification to PM SOP; add alarm on rate-of-change.","effectiveness_check":"Trend next 10 cycles for excursions; close if zero.",
+   "golden":{"rca_adequate":true,"capa_adequate":true,"effectiveness_check":true,"linkage":true,"primary_defect":"none — adequate exemplar"}},
+  {"id":"D03","deviation":"OOS potency result on release.","rca":"Analyst error.","capa":"Invalidate result and retest.","effectiveness_check":"None.",
+   "golden":{"rca_adequate":false,"capa_adequate":false,"effectiveness_check":false,"linkage":false,"primary_defect":"invalidation without justified RCA; no linkage; retest-into-compliance risk"}},
+  {"id":"D04","deviation":"Repeated environmental-monitoring excursions in Grade B.","rca":"Gowning technique variability traced to ambiguous gowning SOP step and no requalification trigger.","capa":"Clarify SOP step; add periodic gowning requalification; supervisor verification.","effectiveness_check":"EM trend + gowning audit over 3 months.",
+   "golden":{"rca_adequate":true,"capa_adequate":true,"effectiveness_check":true,"linkage":true,"primary_defect":"none — adequate exemplar"}},
+  {"id":"D05","deviation":"Fill-weight out of action limit on 4 vials.","rca":"Machine error.","capa":"Adjusted the machine.","effectiveness_check":"None.",
+   "golden":{"rca_adequate":false,"capa_adequate":false,"effectiveness_check":false,"linkage":true,"primary_defect":"shallow RCA (machine error); corrective-only, not preventive"}},
+  {"id":"D06","deviation":"Batch record missing a second-person verification signature.","rca":"Reviewer overloaded at shift change; review-step timing not defined for shift handover.","capa":"Define review timing at handover; add electronic mandatory-field check.","effectiveness_check":"Audit 20 records over 2 months for missing signatures.",
+   "golden":{"rca_adequate":true,"capa_adequate":true,"effectiveness_check":true,"linkage":true,"primary_defect":"none — adequate exemplar"}},
+  {"id":"D07","deviation":"Stability sample pulled 6 days late.","rca":"Scheduling oversight.","capa":"Remind the team.","effectiveness_check":"None.",
+   "golden":{"rca_adequate":false,"capa_adequate":false,"effectiveness_check":false,"linkage":false,"primary_defect":"shallow RCA; CAPA = reminder; no systemic scheduling control; no linkage"}},
+  {"id":"D08","deviation":"Supplier delivered API with incomplete CoA.","rca":"Supplier QMS gap in CoA generation, identified via supplier audit; receiving check did not catch missing fields.","capa":"Supplier CAPA + add CoA completeness check at receiving with hold.","effectiveness_check":"Verify next 5 supplier lots have complete CoA.",
+   "golden":{"rca_adequate":true,"capa_adequate":true,"effectiveness_check":true,"linkage":true,"primary_defect":"none — adequate exemplar"}},
+  {"id":"D09","deviation":"Mislabeled secondary package detected at packaging.","rca":"Label reconciliation step performed but not independently verified; root cause = single-point control.","capa":"Add independent label reconciliation verification; vision check.","effectiveness_check":"Reconciliation audit + zero mislabels over 3 campaigns.",
+   "golden":{"rca_adequate":true,"capa_adequate":true,"effectiveness_check":true,"linkage":true,"primary_defect":"none — adequate exemplar"}},
+  {"id":"D10","deviation":"Water-system TOC excursion.","rca":"It was a one-time event.","capa":"Flushed the loop.","effectiveness_check":"None.",
+   "golden":{"rca_adequate":false,"capa_adequate":false,"effectiveness_check":false,"linkage":true,"primary_defect":"dismissed as one-time without investigation; corrective-only"}},
+  {"id":"D11","deviation":"Two related deviations on the same press in one week.","rca":"Each investigated separately; no trend/recurrence analysis performed.","capa":"Separate fixes for each.","effectiveness_check":"None.",
+   "golden":{"rca_adequate":false,"capa_adequate":false,"effectiveness_check":false,"linkage":false,"primary_defect":"missed recurrence/trend; no systemic CAPA; weak linkage"}},
+  {"id":"D12","deviation":"Bioreactor pH probe reading drift mid-run.","rca":"Probe calibration interval too long; drift not detectable between calibrations; confirmed via data review.","capa":"Shorten calibration interval; add redundant probe with cross-check alarm.","effectiveness_check":"Monitor probe agreement over next 10 runs.",
+   "golden":{"rca_adequate":true,"capa_adequate":true,"effectiveness_check":true,"linkage":true,"primary_defect":"none — adequate exemplar"}}
+ ]
+}
