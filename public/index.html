@@ -40,6 +40,12 @@
   .kv .b{background:var(--surface);border-radius:5px;padding:11px}
   .kv .b .l{font-size:11px;color:var(--muted)} .kv .b .v{font-size:14px;font-weight:600;color:var(--navy)}
   .narr{background:var(--accentbg);border-left:3px solid var(--accent);padding:12px 14px;border-radius:0 4px 4px 0;font-size:14px;white-space:pre-wrap}
+  .flags{margin:12px 0}
+  .flag{border-radius:5px;padding:10px 12px;margin:8px 0;font-size:13px;border-left:4px solid}
+  .flag.stop{background:var(--badbg);border-color:var(--bad);color:#7a1e1e}
+  .flag.warn{background:var(--warnbg);border-color:var(--warn);color:#7a5408}
+  .flag.info{background:var(--accentbg);border-color:var(--accent);color:#1a2f8a}
+  .flag b{display:block;margin-bottom:2px}
   .keyrow{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:10px;font-size:13px;color:var(--muted)}
   .keyrow input{flex:1;min-width:200px}
   footer{color:var(--muted);font-size:12px;padding:24px 0;line-height:1.7}
@@ -112,6 +118,7 @@ function renderQs(){
 }
 function tog(k,v,el){A[k]=A[k]||[];if(el.checked)A[k].push(v);else A[k]=A[k].filter(x=>x!==v);}
 function api(path,b){return fetch(path,{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(b)}).then(r=>r.json());}
+function renderFlags(fl){if(!fl||!fl.length)return"";return `<div class="flags">`+fl.map(f=>`<div class="flag ${f.level}"><b>${f.level==='stop'?'■ STOP — ':f.level==='warn'?'▲ ':'• '}${f.title}</b>${f.text}</div>`).join("")+`</div>`;}
 
 async function doScope(){
  const r=await api("/api/scope",{answers:A});
@@ -119,7 +126,7 @@ async function doScope(){
  document.getElementById('risk-box').innerHTML=
   `<div style="margin:6px 0 12px"><span class="pill ${r.risk.overall}">Overall risk: ${r.risk.overall}</span></div>`+
   `<div class="kv">`+Object.entries(f).map(([k,v])=>`<div class="b"><div class="l">${k}</div><div class="v">${v}</div></div>`).join("")+`</div>`+
-  `<div class="sub" style="margin-top:6px">${r.risk.rationale.join(" · ")}</div>`;
+  `<div class="sub" style="margin-top:6px">${r.risk.rationale.join(" · ")}</div>`+renderFlags(r.risk.flags);
  CTRLS=r.controls;
  document.getElementById('scope-controls').innerHTML=
   `<h2 style="font-size:15px;margin-top:14px">Applicable controls — do you have the evidence? (${CTRLS.length} in scope)</h2>
@@ -154,6 +161,7 @@ function renderDossier(r){
      <div class="b"><div class="l">High-severity gaps</div><div class="v">${reg.high_severity_gaps}</div></div>
    </div>
    <p style="margin:10px 0;font-weight:600;color:${reg.high_severity_gaps?'var(--bad)':'var(--ok)'}">${r.verdict}</p>
+   ${renderFlags(r.risk.flags)}
    <h2 style="font-size:15px;margin-top:16px">Executive summary</h2><div class="narr">${(r.narrative||"").replace(/</g,"&lt;")}</div>
    <h2 style="font-size:15px;margin-top:16px">AI bill-of-materials (best-effort)</h2>
    ${bomShown.length?`<div class="kv">`+bomShown.map(k=>`<div class="b"><div class="l">${k.replace('_',' ')}</div><div class="v" style="font-size:12.5px">${bom[k].join(", ")}</div></div>`).join("")+`</div>`:`<p class="sub">No manifest parsed — inventory relies on interview answers.</p>`}

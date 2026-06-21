@@ -78,6 +78,8 @@ def _narrative(risk, reg, bom, attestation, byo_key):
     top_gaps = [r for r in reg["rows"] if r["status"] == "GAP"][:8]
     gaps_txt = "\n".join(f"- ({r['severity']}) {r['element']}: {r['control']} [{r['framework']}]"
                          for r in top_gaps) or "- none"
+    flags_txt = "\n".join(f"- [{fl['level'].upper()}] {fl['title']}: {fl['text']}"
+                          for fl in risk.get("flags", [])) or "- none"
     prompt = f"""You are drafting the executive section of a GxP AI validation-readiness dossier.
 This is ADVISORY only; a Qualified Person / QA must review and sign. Do NOT invent facts or evidence.
 Use ONLY the deterministic findings below. Be specific and sober. No marketing language.
@@ -87,6 +89,8 @@ FRAMEWORK CLASSIFICATION: {json.dumps(risk['frameworks'])}
 READINESS: {reg['controls_met']}/{reg['controls_total']} controls have evidence; {reg['high_severity_gaps']} high-severity gaps.
 OPEN GAPS:
 {gaps_txt}
+REGULATORY FLAGS (primary-source-verified — weave the relevant ones in, especially any STOP flag):
+{flags_txt}
 DISCOVERED COMPONENTS (best-effort, unverified): {json.dumps({k: bom[k] for k in ('models','providers','mcp_servers','data_stores') if bom.get(k)})}
 
 Write, in plain English:

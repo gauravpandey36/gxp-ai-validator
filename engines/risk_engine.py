@@ -53,7 +53,37 @@ def classify(a):
             "Autonomy posture": autonomy,
         },
         "rationale": _rationale(impact, records, auto, adaptive, llm),
+        "flags": _flags(a, annex22),
     }
+
+
+def _flags(a, annex22):
+    """Primary-source-verified regulatory advisories (the part experts respect)."""
+    f = []
+    llm = a.get("model_type") == "llm"
+    adaptive = a.get("adaptive") == "learning"
+    impact = bool(a.get("impact"))
+    critical = annex22 == "Critical"
+    if llm and (critical or impact):
+        f.append({"level": "stop", "title": "Generative AI / LLM in a critical GMP use",
+                  "text": "The EU GMP Annex 22 (AI) draft covers deterministic models only and states "
+                          "Generative AI and LLMs “should not be used in critical GMP applications.” "
+                          "Confine this to non-critical use, wrap it in a deterministic + human-signed control "
+                          "layer, or use a deterministic model for the critical decision."})
+    if adaptive and impact:
+        f.append({"level": "stop", "title": "Dynamic / continuously-learning model in a GxP-impacting use",
+                  "text": "The Annex 22 draft excludes dynamic, continuously-learning models from critical GMP. "
+                          "Lock the model, or file a Predetermined Change Control Plan (PCCP) with a defined "
+                          "revalidation trigger before deployment."})
+    if a.get("autonomy") == "automated" and impact:
+        f.append({"level": "warn", "title": "Automated action without mandatory human review",
+                  "text": "FDA cited 21 CFR 211.22 in the first AI cGMP warning letter (Purolea, 04/2026): "
+                          "AI-generated GxP outputs must be reviewed and cleared by the Quality Unit before use."})
+    f.append({"level": "info", "title": "Human accountability is non-transferable",
+              "text": "AI may draft and recommend; a Qualified Person / Quality Unit must review, approve, and "
+                      "sign every GxP decision (FDA 21 CFR 211.22; ISPE GAMP AI 2026 — qualify the tool itself, "
+                      "final responsibility stays with qualified personnel)."})
+    return f
 
 
 def _rationale(impact, records, auto, adaptive, llm):
