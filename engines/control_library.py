@@ -18,6 +18,7 @@ def _records(a):  return bool(a.get("enters_records"))
 def _auto(a):     return a.get("autonomy") == "automated"
 def _adaptive(a): return a.get("adaptive") == "learning"
 def _vendor(a):   return a.get("build") in ("cots", "configured", "finetuned")
+def _agentic(a):  return a.get("agentic") in (True, "yes", "true", 1)
 
 CONTROLS = [
     dict(id="C01", element="Intended / context of use", framework="FDA AI credibility framework; GAMP 5",
@@ -88,6 +89,14 @@ CONTROLS = [
          clause="Output reliability; grounding to approved sources", control="Generative outputs are constrained to approved sources and checked for fabrication; LLM use is confined to non-critical GMP unless wrapped in a deterministic, human-signed control layer.",
          question="Are generative outputs constrained to approved sources and checked for hallucination/fabrication?",
          evidence="Grounding / guardrail design", severity="high", applies=_llm),
+    dict(id="C17", element="Agent tool & action scope", framework="Agentic-AI governance; EU AI Act Art. 14; EU GMP Annex 22 (HITL)",
+         clause="Least-privilege tool access; high-impact action approval", control="The agent's available tools/actions are inventoried and least-privilege; high-impact actions require human approval before execution.",
+         question="Are the agent's tools/actions inventoried, least-privilege, and is human approval required before high-impact actions?",
+         evidence="Agent tool/permission register + approval gates", severity="high", applies=_agentic),
+    dict(id="C18", element="Agent action audit & identity", framework="21 CFR Part 11; EU GMP Annex 11; agentic-AI governance",
+         clause="Attributable action logging; scoped agent identity", control="Every tool call/action by the agent and any sub-agents is logged, attributable, and reconstructable; the agent operates under a scoped, revocable identity.",
+         question="Is every action/tool-call by the agent and its sub-agents logged and attributable, under a scoped agent identity?",
+         evidence="Agent action audit trail + identity design", severity="high", applies=_agentic),
 ]
 
 

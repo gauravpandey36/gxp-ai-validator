@@ -11,3 +11,6 @@ S09,"A fine-tuned, continuously-learning ML model predicts dosing for clinical d
 S10,A configured LLM drafts CAPA records that are entered into the QMS after advisory human review; affects product quality/data integrity. Locked. Data: GxP records.,,,,,
 S11,A rule-based (non-AI/deterministic) automation bot transfers values between systems and writes to GxP records automatically; no ML model. Data: GxP records.,,,,,
 S12,An off-the-shelf LLM summarizes published scientific literature for a research team; no GxP impact; no GxP records; advisory; locked. Data: public.,,,,,
+S13,"An agentic AI tool auto-generates and executes computer-system-validation (CSV) protocols; it uses tools to pull system information and writes results into the validation record; a validation lead reviews and approves. Configured LLM, agentic, locked. Data: GxP records.",,,,,
+S14,"An agentic LLM continuously scans public FDA enforcement actions, warning letters, and guidance to flag supplier risk and inspection-readiness gaps; advisory; outputs inform quality decisions but are not auto-entered into GxP records. Data: public/external.",,,,,
+S15,"A custom, continuously-learning agentic AI autonomously adjusts critical process parameters on the live manufacturing line in real time, using tools to act on the MES without per-action human review ('self-healing'). Data: GxP records.",,,,,

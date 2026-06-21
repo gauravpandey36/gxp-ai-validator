@@ -73,7 +73,12 @@
       "llm_stop": false,
       "dynamic_stop": false
     },
-    "llama": {}
+    "llama": {
+      "overall": "LOW",
+      "annex22": "Non-critical",
+      "llm_stop": false,
+      "dynamic_stop": true
+    }
   },
   {
     "id": "S04",
@@ -231,7 +236,7 @@
       "dynamic_stop": true
     },
     "llama": {
-      "overall": "MEDIUM",
+      "overall": "HIGH",
       "annex22": "Significant",
       "llm_stop": false,
       "dynamic_stop": true
@@ -257,7 +262,12 @@
       "llm_stop": true,
       "dynamic_stop": false
     },
-    "llama": {}
+    "llama": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": true,
+      "dynamic_stop": false
+    }
   },
   {
     "id": "S11",
@@ -311,6 +321,90 @@
       "annex22": "Non-critical",
       "llm_stop": false,
       "dynamic_stop": false
+    }
+  },
+  {
+    "id": "S13",
+    "golden": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "stop_llm": true,
+      "stop_dynamic": false,
+      "stop_agentic": false
+    },
+    "engine": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": true,
+      "dynamic_stop": false
+    },
+    "claude": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": true,
+      "dynamic_stop": false
+    },
+    "llama": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": true,
+      "dynamic_stop": false
+    }
+  },
+  {
+    "id": "S14",
+    "golden": {
+      "overall": "LOW",
+      "annex22": "Non-critical",
+      "stop_llm": false,
+      "stop_dynamic": false,
+      "stop_agentic": false
+    },
+    "engine": {
+      "overall": "LOW",
+      "annex22": "Non-critical",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "claude": {
+      "overall": "HIGH",
+      "annex22": "Significant",
+      "llm_stop": false,
+      "dynamic_stop": false
+    },
+    "llama": {
+      "overall": "MEDIUM",
+      "annex22": "Significant",
+      "llm_stop": false,
+      "dynamic_stop": true
+    }
+  },
+  {
+    "id": "S15",
+    "golden": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "stop_llm": false,
+      "stop_dynamic": true,
+      "stop_agentic": true
+    },
+    "engine": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": false,
+      "dynamic_stop": true
+    },
+    "claude": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": false,
+      "dynamic_stop": true
+    },
+    "llama": {
+      "overall": "HIGH",
+      "annex22": "Critical",
+      "llm_stop": true,
+      "dynamic_stop": true
     }
   }
 ]

@@ -11,3 +11,6 @@ S09,MEDIUM,Significant,False,True
 S10,HIGH,Critical,True,False
 S11,HIGH,Critical,False,False
 S12,LOW,Non-critical,False,False
+S13,HIGH,Critical,True,False
+S14,LOW,Non-critical,False,False
+S15,HIGH,Critical,False,True

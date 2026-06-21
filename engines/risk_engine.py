@@ -10,6 +10,7 @@ def classify(a):
     adaptive = a.get("adaptive") == "learning"
     build = a.get("build")
     llm = a.get("model_type") == "llm"
+    agentic = a.get("agentic") in (True, "yes", "true", 1)
 
     # EU GMP Annex 22 criticality
     if impact and (records or auto):
@@ -52,6 +53,8 @@ def classify(a):
             "EU AI Act": euaiact,
             "GAMP 5": gamp,
             "Autonomy posture": autonomy,
+            "Agentic posture": ("Agentic — tool-using / can take actions" if agentic
+                                else "Non-agentic — returns text / predictions"),
         },
         "rationale": _rationale(impact, records, auto, adaptive, llm),
         "flags": _flags(a, annex22),
@@ -80,6 +83,16 @@ def _flags(a, annex22):
         f.append({"level": "warn", "title": "Automated action without mandatory human review",
                   "text": "FDA cited 21 CFR 211.22 in the first AI cGMP warning letter (Purolea, 04/2026): "
                           "AI-generated GxP outputs must be reviewed and cleared by the Quality Unit before use."})
+    agentic = a.get("agentic") in (True, "yes", "true", 1)
+    if agentic and impact and a.get("autonomy") == "automated":
+        f.append({"level": "stop", "title": "Autonomous agent taking GxP actions",
+                  "text": "An agentic / tool-using system that executes actions on GxP-impacting processes or records "
+                          "without per-action human approval. Gate high-impact tool calls behind human approval, scope "
+                          "tools to least privilege, and log every action and sub-agent (Part 11 / Annex 11 + Annex 22 HITL)."})
+    elif agentic and impact:
+        f.append({"level": "warn", "title": "Agentic / tool-using system in a GxP-impacting use",
+                  "text": "Inventory the agent's tools/actions, scope them to least privilege, gate high-impact actions behind "
+                          "human approval, and log every action and sub-agent under a scoped agent identity."})
     f.append({"level": "info", "title": "Human accountability is non-transferable",
               "text": "AI may draft and recommend; a Qualified Person / Quality Unit must review, approve, and "
                       "sign every GxP decision (FDA 21 CFR 211.22; ISPE GAMP AI 2026 — qualify the tool itself, "

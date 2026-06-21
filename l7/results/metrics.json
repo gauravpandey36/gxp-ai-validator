@@ -1,5 +1,5 @@
 {
-  "n": 12,
+  "n": 15,
   "engine": {
     "overall_accuracy": 1.0,
     "overall_kappa_vs_golden": 1.0,
@@ -8,18 +8,18 @@
     "dynamic_stop_recall": 1.0
   },
   "claude": {
-    "overall_accuracy": 0.917,
-    "overall_kappa_vs_golden": 0.857,
-    "annex22_accuracy": 1.0,
-    "llm_stop_recall": 0.75,
+    "overall_accuracy": 0.867,
+    "overall_kappa_vs_golden": 0.756,
+    "annex22_accuracy": 0.933,
+    "llm_stop_recall": 0.8,
     "dynamic_stop_recall": 1.0
   },
   "llama": {
-    "overall_accuracy": 0.75,
-    "overall_kappa_vs_golden": 0.647,
-    "annex22_accuracy": 0.833,
-    "llm_stop_recall": 0.5,
+    "overall_accuracy": 0.8,
+    "overall_kappa_vs_golden": 0.667,
+    "annex22_accuracy": 0.933,
+    "llm_stop_recall": 0.8,
     "dynamic_stop_recall": 1.0
   },
-  "claude_vs_llama_overall_kappa": 0.525
+  "claude_vs_llama_overall_kappa": 0.762
 }
